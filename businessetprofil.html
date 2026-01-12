@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portefeuille</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="businessetprofil.css">
+</head>
+<body>
+
+<div class="container py-4">
+    <div class="welcome-banner p-4 mb-4 text-white position-relative shadow">
+        <div class="d-flex align-items-center mb-1">
+            <i class="fas fa-wand-magic-sparkles me-2"></i>
+            <span class="small opacity-75">Control your flow</span>
+        </div>
+        <h2 class="fw-bold mb-1" data-i18n="welcome">Bonjour, Daniella</h2>
+        <p class="text-warning mb-0 small" data-i18n="warning">Attention à vos dépenses ce mois-ci.</p>
+        
+    </div>
+
+    <div class="nav-dark-container mb-4 shadow">
+        <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link" id="tab-dashboard" data-bs-toggle="pill" data-bs-target="#content-dashboard">
+                    <i class="fas fa-home me-2"></i><span data-i18n="navDash">Tableau de Bord</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link active" id="tab-business" data-bs-toggle="pill" data-bs-target="#content-business">
+                    <i class="fas fa-briefcase me-2"></i><span data-i18n="navBusiness">Mes Business</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="tab-history" data-bs-toggle="pill" data-bs-target="#content-history">
+                    <i class="fas fa-clock-rotate-left me-2"></i><span data-i18n="navHistory">Historique</span>
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="tab-profil" data-bs-toggle="pill" data-bs-target="#content-profil">
+                    <i class="fas fa-user me-2"></i><span data-i18n="navProfil">Profil</span>
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane fade" id="content-dashboard">
+            <div class="text-center py-5">
+                <p class="text-muted">Contenu du Tableau de Bord à venir...</p>
+            </div>
+        </div>
+
+        <div class="tab-pane fade show active" id="content-business">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div class="d-flex align-items-center">
+                    <div class="icon-square-blue me-3">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white mb-0">Gérance de Business</h4>
+                        <small class="text-muted">0 business en gestion</small>
+                    </div>
+                </div>
+                <button class="btn btn-primary-gradient px-4 py-2 shadow-sm">
+                    <i class="fas fa-plus me-2"></i>Nouveau Business
+                </button>
+            </div>
+
+            <div class="text-center py-5 mt-4">
+                <div class="empty-business-icon mx-auto mb-4 shadow-lg">
+                    <i class="fas fa-briefcase fa-3x"></i>
+                </div>
+                <h5 class="text-white fw-bold mb-3">Aucun business enregistré</h5>
+                <p class="text-muted mb-4 mx-auto" style="max-width: 400px;">
+                    Commencez par ajouter votre premier business pour suivre sa performance
+                </p>
+                <button class="btn btn-primary-gradient px-4 py-2 rounded-pill">
+                    <i class="fas fa-plus me-2"></i>Ajouter mon premier business
+                </button>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="content-history">
+            <div class="text-center py-5">
+                <p class="text-muted">Aucun historique disponible.</p>
+            </div>
+        </div>
+
+       
+
+        <div class="tab-pane fade" id="content-profil">
+    <div class="card bg-dark-card border-0 overflow-hidden mb-4 shadow-lg">
+        <div class="profile-banner-tri"></div> <div class="card-body p-4 pt-0">
+            <div class="d-flex align-items-end mb-4 profile-header-overlap">
+                <div class="avatar-dk-large shadow-lg">DM</div>
+                <div class="ms-4 mb-2 flex-grow-1">
+                    <h3 class="text-white fw-bold mb-1">Daniella Moukouri <i class="fas fa-crown text-warning fs-5"></i></h3>
+                    <p class="text-muted mb-2">Entrepreneure passionnée par la finance et l'innovation</p>
+                    <div class="d-flex text-muted small">
+                        <span class="me-3"><i class="fas fa-map-marker-alt me-1"></i> Yaoundé, Cameroun</span>
+                        <span><i class="fas fa-calendar-alt me-1"></i> Membre depuis Janvier 2024</span>
+                    </div>
+                </div>
+                <div class="mb-2 d-flex gap-2">
+                    <button class="btn btn-primary-gradient btn-sm px-3"><i class="fas fa-pen me-2"></i>Modifier le profil</button>
+                    <button class="btn btn-dark-nav btn-sm"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+
+          
+
+<div class="row g-3">
+    <div class="col-md-3 col-6">
+        <div class="stat-card p-3 text-center">
+            <div class="stat-icon-wrapper stat-icon-blue mx-auto mb-2">
+                <i class="fas fa-wave-square"></i>
+            </div>
+            <h4 class="text-white fw-bold mb-0">1,247</h4>
+            <small class="text-muted">Transactions</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card p-3 text-center">
+            <div class="stat-icon-wrapper stat-icon-green mx-auto mb-2">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <h4 class="text-white fw-bold mb-0">485K FCFA</h4>
+            <small class="text-muted">Épargne totale</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card p-3 text-center">
+            <div class="stat-icon-wrapper stat-icon-yellow mx-auto mb-2">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h4 class="text-white fw-bold mb-0">156</h4>
+            <small class="text-muted">Jours actifs</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card p-3 text-center">
+            <div class="stat-icon-wrapper stat-icon-purple mx-auto mb-2">
+                <i class="fas fa-bullseye"></i>
+            </div>
+            <h4 class="text-white fw-bold mb-0">12</h4>
+            <small class="text-muted">Objectifs atteints</small>
+        </div>
+    </div>
+</div>
+
+
+        </div>
+    </div>
+
+    <div class="d-flex gap-2 mb-4 overflow-auto pb-2">
+        <button class="btn btn-purple-gradient btn-sm px-4 rounded-pill">Profil</button>
+        <button class="btn btn-dark-nav btn-sm px-4 rounded-pill text-muted">Sécurité</button>
+        <button class="btn btn-dark-nav btn-sm px-4 rounded-pill text-muted">Préférences</button>
+        <button class="btn btn-dark-nav btn-sm px-4 rounded-pill text-muted">Activité</button>
+    </div>
+
+    <div class="card bg-dark-card border-0 p-4 shadow-lg mb-4">
+        <h5 class="text-white mb-4 d-flex align-items-center">
+            <i class="fas fa-user-circle me-2 text-primary"></i> Informations personnelles
+        </h5>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <label class="text-muted small d-block">Nom complet</label>
+                <span class="text-white fw-bold">Daniella Moukouri</span>
+            </div>
+            <div class="col-md-6">
+                <label class="text-muted small d-block">Email</label>
+                <span class="text-white">daniella.Moukouri@email.com</span>
+            </div>
+            <div class="col-md-6">
+                <label class="text-muted small d-block">Téléphone</label>
+                <span class="text-white">+237 692 58 55 84 </span>
+            </div>
+            <div class="col-md-6">
+                <label class="text-muted small d-block">Localisation</label>
+                <span class="text-white">Yaoundé, Cameroun</span>
+            </div>
+            <div class="col-md-12">
+                <label class="text-muted small d-block">Biographie</label>
+                <p class="text-white small mb-0">Entrepreneure passionnée par la finance et l'innovation</p>
+            </div>
+        </div>
+    </div>
+
+
+<div class="card bg-dark-card border-0 p-4 shadow-lg mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h5 class="text-white mb-0">Achievements</h5>
+        <span class="badge rounded-pill bg-success bg-opacity-10 text-success px-3 py-2">3/5</span>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="achievement-card active p-3 h-100">
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="stat-icon-wrapper stat-icon-yellow">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <i class="fas fa-check-circle text-success shadow-sm"></i>
+                </div>
+                <h6 class="text-white mb-1">Premier pas</h6>
+                <p class="text-muted smaller mb-2">Première transaction enregistrée</p>
+                <div class="smaller text-muted opacity-75"><i class="fas fa-calendar-alt me-1"></i>5 Jan 2024</div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="achievement-card active p-3 h-100">
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="stat-icon-wrapper stat-icon-blue">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <i class="fas fa-check-circle text-success shadow-sm"></i>
+                </div>
+                <h6 class="text-white mb-1">Épargnant régulier</h6>
+                <p class="text-muted smaller mb-2">Épargné pendant 30 jours consécutifs</p>
+                <div class="smaller text-muted opacity-75"><i class="fas fa-calendar-alt me-1"></i>15 Fév 2024</div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="achievement-card active p-3 h-100">
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="stat-icon-wrapper stat-icon-purple">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <i class="fas fa-check-circle text-success shadow-sm"></i>
+                </div>
+                <h6 class="text-white mb-1">Expert du budget</h6>
+                <p class="text-muted smaller mb-2">Respecté le budget 3 mois de suite</p>
+                <div class="smaller text-muted opacity-75"><i class="fas fa-calendar-alt me-1"></i>1 Mar 2024</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+  
+<div class="card border-danger border-opacity-25 bg-danger bg-opacity-10 p-4 mb-5 shadow-sm">
+    <div class="d-flex align-items-center mb-3">
+        <div class="stat-icon-wrapper stat-icon-red me-3">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h6 class="text-danger fw-bold mb-0">Zone dangereuse</h6>
+    </div>
+    
+    <p class="text-muted smaller mb-3">
+        La déconnexion fermera votre session active. <br>
+        Vous devrez vous reconnecter pour accéder à votre compte.
+    </p>
+    
+    <button class="btn btn-danger btn-sm px-4 rounded-pill shadow-sm" onclick="logout()">
+        <i class="fas fa-sign-out-alt me-2"></i>Se déconnecter
+    </button>
+</div>
+
+
+
+    <div class="text-center py-4 opacity-50">
+     
+        <p class="smaller">Plateforme de Gestion Intelligente de Portefeuille</p>
+    </div>
+</div>
+
+
+
+          
+          
+          
+
+
+<div class="bot-button shadow"><i class="fas fa-robot"></i></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="businessetprofil.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+ 
