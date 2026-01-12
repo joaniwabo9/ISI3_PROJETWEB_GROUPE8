@@ -1,0 +1,174 @@
+body {
+  background: linear-gradient(180deg, #060b2d, #0c1a5b);
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* HEADER */
+.header-card {
+  background: linear-gradient(145deg, #2563eb, #1e40af);
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.header-card span {
+  color: #e0e7ff;
+}
+
+.header-card p {
+  color: #ff9e9e;
+}
+
+/* MENU */
+.menu-bar {
+  display: flex;
+  gap: 15px;
+}
+
+.menu-btn {
+  background: rgba(255,255,255,0.08);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 15px;
+  color: #cfd8ff;
+}
+
+.menu-btn.active {
+  background: linear-gradient(135deg, #4f7cff, #6a5cff);
+  color: white;
+}
+
+/* TITRE */
+.section-title {
+  font-weight: bold;
+}
+
+/* STATS */
+.stat-card {
+  background: linear-gradient(145deg, #13246b, #0d1b55);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.stat-card h2 {
+  font-weight: bold;
+}
+
+.stat-card span {
+  font-size: 0.9rem;
+}
+
+.progress-bar-custom {
+  height: 4px;
+  background: #00ffc8;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.progress-bar-custom.red {
+  background: #ff5c5c;
+}
+
+/* INFO */
+.info-card {
+  background: linear-gradient(145deg, #13246b, #0d1b55);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.info-card i {
+  font-size: 1.5rem;
+  color: #6ae3ff;
+}
+
+/* FILTRES */
+.filter-bar {
+  display: flex;
+  gap: 15px;
+}
+
+.filter-btn {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 15px;
+  color: #cfd8ff;
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #4f7cff, #6a5cff);
+  color: white;
+}
+
+.transaction-container {
+  max-width: 700px;
+}
+
+.date-header {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #cfd8ff;
+}
+
+.transaction-card {
+  background: linear-gradient(145deg, #1b2c7a, #13225f);
+  border-radius: 15px;
+  padding: 15px 20px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.icon.expense {
+  background: rgba(255, 80, 80, 0.2);
+  color: #ff5c5c;
+}
+
+.icon.income {
+  background: rgba(0, 255, 200, 0.2);
+  color: #00ffc8;
+}
+
+.details {
+  flex-grow: 1;
+}
+
+.details h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.details small {
+  color: #aab4ff;
+}
+
+.amount {
+  font-weight: bold;
+  text-align: right;
+}
+
+.amount span {
+  display: block;
+  font-size: 0.75rem;
+  color: #bfc8ff;
+}
+
+.amount.negative {
+  color: #ff5c5c;
+}
+
+.amount.positive {
+  color: #00ffc8;
+}
