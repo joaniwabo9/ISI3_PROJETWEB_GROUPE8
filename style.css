@@ -1,0 +1,111 @@
+/* Importation d'une police moderne */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+:root {
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --input-bg: #1e293b;
+    --border-color: #334155;
+    --accent-orange: #e97c24;
+    --text-light: #f8fafc;
+}
+
+body {
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+/* La carte du formulaire */
+
+.signup-card {
+    background-color: rgba(30, 41, 59, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 480px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Le titre en dégradé */
+
+.gradient-title {
+    background: linear-gradient(to right, #3b82f6, #a855f7, #f1a20f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.2rem;
+}
+
+
+/* Labels */
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+
+/* Inputs personnalisés */
+
+.input-group {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    /* transition: all 0.3s ease; */
+}
+
+.input-group:focus-within {
+    border-color: #3b82f6;
+}
+
+.input-group-text {
+    background: transparent;
+    border: none;
+    color: #9ca9bb;
+    padding-left: 15px;
+}
+
+.form-control {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    padding: 12px 10px;
+    box-shadow: none !important;
+}
+
+.form-control::placeholder {
+    color: #64748b;
+}
+
+
+/* Couleurs vertes pour les liens */
+
+.text-accent {
+    color: var(--accent-green);
+    cursor: pointer;
+}
+
+
+/* Checkbox personnalisée */
+
+.form-check-input {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-orange);
+    border-color: var(--accent-orange);
+}
+
+.btn-eye {
+    cursor: pointer;
+    padding-right: 15px;
+}
