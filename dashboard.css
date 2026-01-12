@@ -1,0 +1,366 @@
+/* ----- GLOBAL ----- */
+
+body {
+  background: linear-gradient(180deg, #071466, #0c1c55);
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard {
+  max-width: 1200px;
+}
+
+/* ----- WELCOME CARD ----- */
+.welcome-card {
+  background: linear-gradient(135deg, #1e90ff, #4a6cff);
+  border-radius: 30px;
+  padding: 25px;
+  width:  100%;
+}
+
+.welcome-card .username {
+  color: #e6ebff;
+}
+
+.alert-text {
+  color: #ffb3b3;
+}
+
+/* ----- MENU ----- */
+.menu {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.05);
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.menu-item {
+  background: none;
+  border: none;
+  color: #cfd8ff;
+  padding: 12px 20px;
+  border-radius: 15px;
+}
+
+.menu-item.active {
+  background: #4a7cff;
+  color: white;
+}
+
+/* ----- STAT CARDS ----- */
+.stat-card {
+  background: linear-gradient(145deg, #13276a, #0e1d55);
+  border-radius: 30px;
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.stat-card h2 {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.stat-card span {
+  font-size: 0.9rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.85;
+}
+
+/* ----- POSITIVE TEXT ----- */
+.positive {
+  color: #3dffb3;
+}
+
+/* ----- PROGRESS CIRCLE ----- */
+.progress-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 6px solid #3dffb3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+/* ----- PREDICTION BAR ----- */
+.prediction-bar {
+  height: 6px;
+  width: 100%;
+  background: #3dffb3;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+/* ----- FLOATING BUTTON ----- */
+.floating-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #3dffb3;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+/* ===== GLOBAL ===== */
+body {
+  background: linear-gradient(180deg, #050b2d, #0b1f4a);
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard {
+  max-width: 1100px;
+}
+
+/* ===== ZONE DE SCAN ===== */
+.scan-area {
+  border: 2px dashed rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 40px 20px;
+  background: linear-gradient(145deg, #101f4d, #0b173d);
+}
+
+.scan-icon {
+  font-size: 2.5rem;
+  color: #6ecbff;
+}
+
+.scan-area h5 {
+  margin-top: 15px;
+}
+
+.scan-area p {
+  color: #a9b7ff;
+}
+
+/* ===== TITRE SECTION ===== */
+.section-title {
+  font-weight: 600;
+  color: #dbe2ff;
+}
+
+/* ===== BOUTONS FILTRES ===== */
+.filter-btn {
+  background: rgba(255,255,255,0.08);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 12px;
+  color: #cfd8ff;
+  font-size: 0.9rem;
+}
+
+/* ===== TRANSACTIONS ===== */
+.transaction-card {
+  background: linear-gradient(145deg, #12255a, #0c1b45);
+  border-radius: 18px;
+  padding: 15px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.transaction-card.active {
+  border-bottom: 3px solid #3dffcc;
+}
+
+.transaction-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.transaction-left h6 {
+  margin: 0;
+}
+
+.transaction-left small {
+  color: #fff;
+}
+
+/* ===== ICONES ===== */
+.icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.icon.green {
+  background: rgba(67, 64, 216, 0.2);
+  color: #fff;
+}
+
+.icon.blue {
+  background: rgba(67, 64, 216, 0.2);
+  color: #fff;
+}
+
+/* ===== MONTANTS ===== */
+.transaction-right {
+  text-align: right;
+}
+
+.amount {
+  font-weight: bold;
+  display: block;
+}
+
+.amount.negative {
+  color: #ff7b7b;
+}
+.transport{
+    padding: 16px;
+}
+.investissement{
+    padding:20px;
+}
+
+
+
+/* Carte principale */
+.saving-card {
+    background: rgba(67, 64, 216, 0.2);
+    border-radius: 18px;
+    padding: 25px;
+    height: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Icône ronde */
+.icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* Bocal */
+.jar {
+    position: relative;
+    height: 180px;
+    border-radius: 12px;
+    border: 2px solid rgba(67, 64, 216, 0.2);
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+/* Remplissage */
+.fill {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.fill span {
+    padding-top: 10px;
+    
+}
+
+.fill-blue {
+    background: linear-gradient(180deg, #3dd5f3, #0dcaf0);
+}
+
+.fill-green {
+    background: linear-gradient(180deg, #34d399, #198754);
+}
+
+.fill-purple {
+    background: linear-gradient(180deg, #a78bfa, #6f42c1);
+}
+
+/* Barre de progression */
+.progress {
+    height: 6px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 10px;
+}
+body.bg-dashboard {
+    background: linear-gradient(180deg, #000203, #010d14);
+    font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* Carte de prêt */
+.loan-card {
+    background: rgba(67, 64, 216, 0.2);
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(67, 64, 216, 0.2);
+}
+
+/* Barre de progression */
+.loan-progress {
+    height: 14px;
+    background-color: rgba(67, 64, 216, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.loan-progress .progress-bar {
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+/* Bouton + */
+.add-btn {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #2dd4bf, #22c55e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0b1c26;
+    font-size: 20px;
+}
+
+/* Séparateur */
+hr {
+    border-color: rgba(224, 213, 213, 0.15);
+}
+.h6{
+  color: white;
+  }
+@media (max-width: 576px) {
+  .menu {
+    flex-direction: column;
+  }
+
+  .menu-item {
+    width: 100%;
+  }
+
+  .transaction-card {
+    flex-direction: column;
+  }
+
+  .transaction-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
