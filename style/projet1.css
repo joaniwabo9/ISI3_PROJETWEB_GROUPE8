@@ -1,0 +1,465 @@
+/* Importation d'une police moderne */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+:root {
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --input-bg: #1e293b;
+    --border-color: #334155;
+    --accent-orange: #e97c24;
+    --text-light: #f8fafc;
+}
+
+body {
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+/* La carte du formulaire */
+
+.signup-card {
+    background-color: rgba(30, 41, 59, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 480px;
+    backdrop-filter: blur(15px) brightness(1.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Le titre en dégradé */
+
+.title {
+    background: linear-gradient(to right, #3b82f6, #a855f7, #f1a20f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.2rem;
+}
+
+
+/* Labels */
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+
+/* 1. Force l'input à rester transparent quoi qu'il arrive */
+
+.form-control,
+.form-control:focus,
+.form-control:not(:placeholder-shown) {
+    background-color: transparent;
+    background: transparent;
+    color: #cbd5e1;
+    outline: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+    /* Supprime le délai de changement de couleur */
+}
+
+
+/* 2. Écrase le style forcé par Chrome/Edge sur les mots de passe */
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
+/* Inputs personnalisés */
+
+.input-group {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    /* transition: all 0.3s ease; */
+}
+
+.input-group:focus-within {
+    border-color: #3b82f6;
+}
+
+.input-group-text {
+    background: transparent;
+    border: none;
+    color: #9ca9bb;
+    padding-left: 15px;
+}
+
+.form-control {
+    background: transparent;
+    border: none;
+    color: #cbd5e1;
+    padding: 12px 10px;
+    box-shadow: none;
+}
+
+.form-control:hover {
+    background: transparent;
+    color: #cbd5e1;
+}
+
+.form-control::placeholder {
+    color: #64748b;
+}
+
+
+/* Couleurs vertes pour les liens */
+
+.text-accent {
+    color: var(--accent-orange);
+    cursor: pointer;
+}
+
+
+/* Checkbox personnalisée */
+
+.form-check-input {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-orange);
+    border-color: var(--accent-orange);
+}
+
+.btn-eye {
+    cursor: pointer;
+    padding-right: 15px;
+}
+
+
+/* --- Bouton Principal Vert --- */
+
+.cree {
+    background-color: #b96a10;
+    /* Vert émeraude */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.cree:hover {
+    background-color: #e25219;
+    color: white;
+}
+
+
+/* Animation de la flèche */
+
+.arrow-icon {
+    transition: transform 0.5s ease;
+}
+
+.cree:hover .arrow-icon {
+    transform: translateX(5px);
+    /* Décale la flèche vers la droite au survol */
+}
+
+
+/* --- Séparateur (Divider) --- */
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #dfe7f1;
+    font-size: 0.85rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #334155;
+}
+
+.divider:not(:empty)::before {
+    margin-right: .75em;
+}
+
+.divider:not(:empty)::after {
+    margin-left: .75em;
+}
+
+
+/* --- Boutons Sociaux (Google/GitHub) --- */
+
+.but {
+    background-color: #1e293b;
+    /* Même couleur que le fond des inputs */
+    color: #f8fafc;
+    border: 1px solid #334155;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.but:hover {
+    background-color: #334155;
+    border-color: #475569;
+    color: rgb(250, 137, 92);
+}
+
+
+/* --- Lien "Se connecter" --- */
+
+.text-primary {
+    color: #3b82f6;
+    /* Bleu électrique pour le lien */
+}
+
+
+/* footer des pages */
+
+p {
+    padding-left: 30px;
+}
+
+p a {
+    text-decoration: none;
+    color: #cc98fc;
+    transition: all 0.5s ease;
+}
+
+p a:hover {
+    color: #8fb4e5;
+}
+
+
+/* 1. Le conteneur de fond */
+
+.bubble-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Derrière tout le contenu */
+    overflow: hidden;
+    background: #0f172a;
+    /* Fond sombre assorti à ton image */
+}
+
+
+/* 2. Style de base d'une bulle */
+
+.bubble {
+    position: absolute;
+    top: -150px;
+    /* Part de dessous l'écran */
+    border-radius: 50%;
+    opacity: 0.3;
+    filter: blur(8px);
+    /* Effet de profondeur */
+    animation: float-up infinite linear;
+}
+
+
+/* 3. Couleurs */
+
+.bubble.orange {
+    background: #ff9800;
+    box-shadow: 0 0 20px rgba(255, 152, 0, 0.4);
+}
+
+.bubble.blue {
+    background: #3b82f6;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+
+/* 4. Animation de montée */
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.3;
+    }
+    80% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* 5. Randomisation (Taille, Position, Vitesse) */
+
+
+/* Bulle 1 */
+
+.bubble:nth-child(1) {
+    left: 10%;
+    width: 80px;
+    height: 80px;
+    animation-duration: 12s;
+    animation-delay: 0s;
+}
+
+
+/* Bulle 2 */
+
+.bubble:nth-child(2) {
+    left: 25%;
+    width: 40px;
+    height: 40px;
+    animation-duration: 15s;
+    animation-delay: 2s;
+}
+
+
+/* Bulle 3 */
+
+.bubble:nth-child(3) {
+    left: 40%;
+    width: 120px;
+    height: 120px;
+    animation-duration: 18s;
+    animation-delay: 4s;
+}
+
+
+/* Bulle 4 */
+
+.bubble:nth-child(4) {
+    left: 55%;
+    width: 60px;
+    height: 60px;
+    animation-duration: 14s;
+    animation-delay: 1s;
+}
+
+
+/* Bulle 5 */
+
+.bubble:nth-child(5) {
+    left: 70%;
+    width: 90px;
+    height: 90px;
+    animation-duration: 20s;
+    animation-delay: 5s;
+}
+
+
+/* Bulle 6 */
+
+.bubble:nth-child(6) {
+    left: 85%;
+    width: 50px;
+    height: 50px;
+    animation-duration: 13s;
+    animation-delay: 3s;
+}
+
+
+/* Bulle 7 */
+
+.bubble:nth-child(7) {
+    left: 15%;
+    width: 70px;
+    height: 70px;
+    animation-duration: 16s;
+    animation-delay: 7s;
+}
+
+
+/* Bulle 8 */
+
+.bubble:nth-child(8) {
+    left: 80%;
+    width: 100px;
+    height: 100px;
+    animation-duration: 22s;
+    animation-delay: 2s;
+}
+
+
+/* Bulle 9 */
+
+.bubble:nth-child(9) {
+    left: 45%;
+    width: 30px;
+    height: 30px;
+    animation-duration: 11s;
+    animation-delay: 6s;
+}
+
+
+/* Bulle 10 */
+
+.bubble:nth-child(10) {
+    left: 95%;
+    width: 110px;
+    height: 110px;
+    animation-duration: 19s;
+    animation-delay: 0s;
+}
+
+
+/* Bulle 11 */
+
+.bubble:nth-child(11) {
+    right: 100%;
+    width: 200px;
+    height: 200px;
+    animation-duration: 19s;
+    animation-delay: 0s;
+}
+
+
+/* Bulle 12 */
+
+.bubble:nth-child(12) {
+    right: 100%;
+    width: 100px;
+    height: 100px;
+    animation-duration: 10s;
+    animation-delay: 0s;
+}
+
+
+/* Bulle 13*/
+
+.bubble:nth-child(13) {
+    right: 100%;
+    width: 30px;
+    height: 30px;
+    animation-duration: 10s;
+    animation-delay: 0s;
+}
+
+
+/* Bulle 14 */
+
+.bubble:nth-child(14) {
+    right: 100%;
+    width: 50px;
+    height: 50px;
+    animation-duration: 20s;
+    animation-delay: 0s;
+}
