@@ -1,0 +1,94 @@
+/* BACKGROUND */
+body {
+  background: linear-gradient(180deg, #060b2d, #0c1a5b);
+  color: #e5e7eb; /* TEXTE PRINCIPAL PLUS CLAIR */
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* CARD */
+.business-card {
+  max-width: 700px;
+  background: linear-gradient(145deg, #13246b, #3d106d);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+}
+
+/* TITRE */
+.title-gradient {
+  font-weight: 700;
+  font-size: 1.5rem;
+  background: linear-gradient(90deg, #7dd3fc, #c4b5fd, #34d399);
+  -webkit-text-fill-color:  #ffffff;
+}
+
+/* ICÔNE FERMETURE */
+.close-icon {
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #d45937; /* JAUNE PLUS VISIBLE */
+}
+
+/* LABELS */
+.form-label {
+  color: #d45937; /* ORANGE JAUNE BIEN VISIBLE */
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* INPUTS */
+.custom-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f9fafb; /* TEXTE BLANC LISIBLE */
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.custom-input::placeholder {
+  color: #9ca3af; /* GRIS CLAIR */
+}
+
+.custom-input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #818cf8;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.4);
+  color: #ffffff;
+}
+
+/* BOUTONS */
+.btn-cancel {
+  background: rgba(255, 255, 255, 0.12);
+  color: #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: 500;
+}
+
+.btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #38bdf8, #a78bfa);
+  color: #020617; /* TEXTE SOMBRE SUR BOUTON CLAIR */
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 12px;
+  border: none;
+}
+
+.btn-submit:hover {
+  opacity: 0.95;
+}
+
+/* RESPONSIVE */
+@media (max-width: 576px) {
+  .business-card {
+    padding: 20px;
+  }
+
+  .title-gradient {
+    font-size: 1.3rem;
+  }
+}
