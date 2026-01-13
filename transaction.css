@@ -1,0 +1,70 @@
+body {
+  background: radial-gradient(circle at top, #0b1d3a, #020617);
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  color: #fff;
+}
+
+/* MODAL */
+.transaction-modal {
+  background: #0f172a;
+  border-radius: 18px;
+  padding: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* TITRE */
+.modal-title {
+  font-weight: 600;
+}
+
+/* LABELS */
+.form-label {
+  font-size: 14px;
+  color: #cbd5f5;
+}
+
+/* INPUTS */
+.custom-input {
+  background: #020617;
+  border: 1px solid #1e293b;
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+.custom-input:focus {
+  background: #020617;
+  border-color: #6366f1;
+  box-shadow: none;
+  color: #fff;
+}
+
+/* SELECT */
+select option {
+  background: #020617;
+  color: #fff;
+}
+
+/* BOUTON GRADIENT */
+.btn-gradient {
+  background: linear-gradient(90deg, #3b82f6, #a855f7);
+  border: none;
+  border-radius: 14px;
+  padding: 12px;
+  font-weight: 600;
+  color: white;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 576px) {
+  .transaction-modal {
+    margin: 10px;
+  }
+}
