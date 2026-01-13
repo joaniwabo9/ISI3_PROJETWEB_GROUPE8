@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="businessetprofil.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -281,7 +282,277 @@
           
 
 
-<div class="bot-button shadow"><i class="fas fa-robot"></i></div>
+<div class="bot-button shadow" onclick="openAIAssistant()"><i class="fas fa-robot"></i></div>
+
+<!-- Modal IA Assistant -->
+<div class="modal fade" id="aiAssistantModal" tabindex="-1" aria-labelledby="aiAssistantModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content bg-dark-card border-0">
+            <div class="modal-header border-bottom border-secondary">
+                <h5 class="modal-title text-white" id="aiAssistantModalLabel">
+                    <i class="fas fa-brain me-2 text-primary"></i>Assistant IA Financier
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="row g-0 h-100">
+                    <!-- Sidebar Navigation -->
+                    <div class="col-md-3 bg-dark-nav p-3">
+                        <div class="nav flex-column nav-pills" id="ai-nav-tab" role="tablist" aria-orientation="vertical">
+                            <button class="nav-link active mb-2" id="ai-chat-tab" data-bs-toggle="pill" data-bs-target="#ai-chat" type="button" role="tab">
+                                <i class="fas fa-comments me-2"></i>Chat IA
+                            </button>
+                            <button class="nav-link mb-2" id="ai-analysis-tab" data-bs-toggle="pill" data-bs-target="#ai-analysis" type="button" role="tab">
+                                <i class="fas fa-search-dollar me-2"></i>Analyse des Dépenses
+                            </button>
+                            <button class="nav-link mb-2" id="ai-savings-tab" data-bs-toggle="pill" data-bs-target="#ai-savings" type="button" role="tab">
+                                <i class="fas fa-piggy-bank me-2"></i>Suggestions d'Épargne
+                            </button>
+                            <button class="nav-link mb-2" id="ai-business-tab" data-bs-toggle="pill" data-bs-target="#ai-business" type="button" role="tab">
+                                <i class="fas fa-lightbulb me-2"></i>Idées Business
+                            </button>
+                            <button class="nav-link mb-2" id="ai-alerts-tab" data-bs-toggle="pill" data-bs-target="#ai-alerts" type="button" role="tab">
+                                <i class="fas fa-bell me-2"></i>Alertes Intelligentes
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Main Content -->
+                    <div class="col-md-9 p-4">
+                        <div class="tab-content" id="ai-nav-tabContent">
+                            <!-- Chat IA -->
+                            <div class="tab-pane fade show active" id="ai-chat" role="tabpanel">
+                                <h4 class="text-white mb-4">Assistant IA Financier</h4>
+                                
+                                <div class="card bg-dark-card border-0" style="height: 600px;">
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1 overflow-auto mb-3" id="chat-messages">
+                                            <div class="ai-message mb-3">
+                                                <div class="d-flex align-items-start">
+                                                    <div class="stat-icon-wrapper stat-icon-purple me-3">
+                                                        <i class="fas fa-robot"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <div class="bg-primary bg-opacity-20 p-3 rounded">
+                                                            <p class="text-white mb-0">Bonjour Daniella ! 👋 Je suis votre assistant IA financier personnel. Je peux vous aider avec :</p>
+                                                            <ul class="text-white mb-0 mt-2">
+                                                                <li>📊 Analyser vos dépenses et revenus</li>
+                                                                <li>💰 Suggérer des stratégies d'épargne</li>
+                                                                <li>💡 Proposer des idées de business adaptées à votre budget</li>
+                                                                <li>🚨 Identifier les risques financiers</li>
+                                                                <li>📈 Donner des conseils personnalisés</li>
+                                                            </ul>
+                                                            <p class="text-white mb-0 mt-2">Que souhaitez-vous savoir sur vos finances ?</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-dark text-white border-secondary" id="chat-input" placeholder="Tapez votre question ici...">
+                                            <button class="btn btn-primary-gradient" onclick="sendMessage()">
+                                                <i class="fas fa-paper-plane"></i>
+                                            </button>
+                                        </div>
+                                        <div class="mt-2">
+                                            <small class="text-muted">Suggestions : "Analyse mes dépenses", "Comment épargner plus ?", "Idées de business pour 100k FCFA"</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Analyse des Dépenses -->
+                            <div class="tab-pane fade" id="ai-analysis" role="tabpanel">
+                                <h4 class="text-white mb-4">Analyse Intelligente des Dépenses</h4>
+                                
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="card bg-dark-card border-0 p-4">
+                                            <h6 class="text-warning mb-3"><i class="fas fa-exclamation-triangle me-2"></i>Alertes de Surconsommation</h6>
+                                            <div id="overspending-alerts"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card bg-dark-card border-0 p-4">
+                                            <h6 class="text-info mb-3"><i class="fas fa-chart-bar me-2"></i>Analyse par Catégorie</h6>
+                                            <div id="category-analysis"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card bg-dark-card border-0 p-4 mt-4">
+                                    <h6 class="text-white mb-3">Période d'Analyse</h6>
+                                    <div class="row g-3">
+                                        <div class="col-md-3">
+                                            <select class="form-select bg-dark text-white" id="analysis-period">
+                                                <option value="daily">Quotidienne</option>
+                                                <option value="weekly">Hebdomadaire</option>
+                                                <option value="monthly" selected>Mensuelle</option>
+                                                <option value="yearly">Annuelle</option>
+                                                <option value="custom">Période Spécifique</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="date" class="form-control bg-dark text-white" id="start-date">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="date" class="form-control bg-dark text-white" id="end-date">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button class="btn btn-primary-gradient w-100" onclick="updateAnalysis()">Analyser</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Suggestions d'Épargne -->
+                            <div class="tab-pane fade" id="ai-savings" role="tabpanel">
+                                <h4 class="text-white mb-4">Suggestions d'Épargne Personnalisées</h4>
+                                
+                                <div class="row g-4">
+                                    <div class="col-md-8">
+                                        <div class="card bg-dark-card border-0 p-4">
+                                            <h6 class="text-success mb-3"><i class="fas fa-piggy-bank me-2"></i>Recommandations d'Épargne</h6>
+                                            <div id="savings-recommendations"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card bg-dark-card border-0 p-4">
+                                            <h6 class="text-white mb-3">Calculateur d'Épargne</h6>
+                                            <div class="mb-3">
+                                                <label class="form-label text-muted">Revenus Mensuels</label>
+                                                <input type="number" class="form-control bg-dark text-white" id="monthly-income" placeholder="FCFA">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label text-muted">Objectif d'Épargne (%)</label>
+                                                <input type="range" class="form-range" id="savings-target" min="5" max="50" value="20">
+                                                <span class="text-white" id="savings-percentage">20%</span>
+                                            </div>
+                                            <button class="btn btn-success w-100" onclick="calculateSavings()">Calculer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Idées Business -->
+                            <div class="tab-pane fade" id="ai-business" role="tabpanel">
+                                <h4 class="text-white mb-4">Idées Business Adaptées à Votre Budget</h4>
+                                
+                                <div class="card bg-dark-card border-0 p-4 mb-4">
+                                    <h6 class="text-white mb-3">Votre Profil Financier</h6>
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <div class="text-center">
+                                                <div class="stat-icon-wrapper stat-icon-blue mx-auto mb-2">
+                                                    <i class="fas fa-coins"></i>
+                                                </div>
+                                                <h6 class="text-white" id="available-capital">329,520 FCFA</h6>
+                                                <small class="text-muted">Capital Disponible</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="text-center">
+                                                <div class="stat-icon-wrapper stat-icon-green mx-auto mb-2">
+                                                    <i class="fas fa-chart-line"></i>
+                                                </div>
+                                                <h6 class="text-white">Modéré</h6>
+                                                <small class="text-muted">Profil de Risque</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="text-center">
+                                                <div class="stat-icon-wrapper stat-icon-purple mx-auto mb-2">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <h6 class="text-white">Intermédiaire</h6>
+                                                <small class="text-muted">Niveau d'Expérience</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div id="business-ideas"></div>
+                            </div>
+                            
+                            <!-- Alertes Intelligentes -->
+                            <div class="tab-pane fade" id="ai-alerts" role="tabpanel">
+                                <h4 class="text-white mb-4">Alertes et Notifications Intelligentes</h4>
+                                
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="card bg-dark-card border-0 p-4">
+                                            <h6 class="text-danger mb-3"><i class="fas fa-exclamation-circle me-2"></i>Alertes Actives</h6>
+                                            <div id="active-alerts"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card bg-dark-card border-0 p-4">
+                                            <h6 class="text-info mb-3"><i class="fas fa-cog me-2"></i>Configuration des Alertes</h6>
+                                            <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="deficit-alert" checked>
+                                                    <label class="form-check-label text-white" for="deficit-alert">
+                                                        Alerte déficit fin de mois
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="overspend-alert" checked>
+                                                    <label class="form-check-label text-white" for="overspend-alert">
+                                                        Alerte surconsommation
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="savings-alert">
+                                                    <label class="form-check-label text-white" for="savings-alert">
+                                                        Rappel objectif épargne
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Chat IA -->
+                            <div class="tab-pane fade" id="ai-chat" role="tabpanel">
+                                <h4 class="text-white mb-4">Assistant IA Conversationnel</h4>
+                                
+                                <div class="card bg-dark-card border-0" style="height: 500px;">
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1 overflow-auto mb-3" id="chat-messages-secondary">
+                                            <div class="ai-message mb-3">
+                                                <div class="d-flex align-items-start">
+                                                    <div class="stat-icon-wrapper stat-icon-purple me-3">
+                                                        <i class="fas fa-robot"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <div class="bg-primary bg-opacity-20 p-3 rounded">
+                                                            <p class="text-white mb-0">Vous pouvez aussi me poser des questions ici si vous préférez cette vue !</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-dark text-white" id="chat-input-secondary" placeholder="Posez votre question...">
+                                            <button class="btn btn-primary-gradient" onclick="sendMessageSecondary()">
+                                                <i class="fas fa-paper-plane"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="businessetprofil.js"></script>

@@ -60,6 +60,230 @@ body {
     position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px;
     background: var(--purple-gradient); border-radius: 50%; display: flex;
     align-items: center; justify-content: center; font-size: 20px; color: white;
+    cursor: pointer; transition: all 0.3s ease; z-index: 1000;
+}
+
+.bot-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(162, 89, 255, 0.4);
+}
+
+/* Styles pour le modal IA */
+.modal-xl {
+    max-width: 1200px;
+}
+
+.bg-dark-nav {
+    background-color: var(--dark-nav);
+}
+
+.nav-pills .nav-link {
+    color: #8a8d9b;
+    border-radius: 12px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-pills .nav-link.active {
+    background: var(--purple-gradient) !important;
+    color: white !important;
+}
+
+/* Styles pour les graphiques */
+.chart-container {
+    position: relative;
+    height: 200px;
+}
+
+/* Messages du chat */
+.ai-message, .user-message {
+    margin-bottom: 15px;
+}
+
+.user-message {
+    text-align: right;
+}
+
+.user-message .bg-info {
+    background: linear-gradient(135deg, #4facfe, #00f2fe) !important;
+}
+
+.ai-message .bg-primary {
+    background: linear-gradient(135deg, #6a11cb, #2575fc) !important;
+}
+
+/* Amélioration du chat */
+#chat-messages, #chat-messages-secondary {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+#chat-messages::-webkit-scrollbar, #chat-messages-secondary::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-messages::-webkit-scrollbar-track, #chat-messages-secondary::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb, #chat-messages-secondary::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb:hover, #chat-messages-secondary::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Messages avec formatage */
+.ai-message .text-white, .user-message .text-white {
+    line-height: 1.5;
+}
+
+.ai-message .text-white strong {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.ai-message .text-white ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.ai-message .text-white li {
+    margin-bottom: 5px;
+}
+
+/* Animation pour l'indicateur de frappe */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.fa-circle-notch {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Amélioration des bulles de message */
+.ai-message .bg-primary, .user-message .bg-info {
+    border-radius: 18px !important;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Timestamps */
+.ai-message small, .user-message small {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+/* Input du chat */
+#chat-input, #chat-input-secondary {
+    border-radius: 25px;
+    padding: 12px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#chat-input:focus, #chat-input-secondary:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 0 0.2rem rgba(79, 172, 254, 0.25);
+}
+
+/* Bouton d'envoi */
+.btn-primary-gradient {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-gradient:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+}
+
+/* Alertes */
+.alert-item {
+    background: rgb(226, 220, 220);
+    border-left: 3px solid #ffc107;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.alert-item.danger {
+    background: rgba(240, 238, 238, 0.911);
+    border-left-color: #dc3545;
+}
+
+.alert-item.success {
+    background: rgba(40, 167, 69, 0.1);
+    border-left-color: #28a745;
+}
+
+/* Business cards */
+.business-idea-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.business-idea-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.investment-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.investment-low {
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+}
+
+.investment-medium {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+}
+
+.investment-high {
+    background: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-xl {
+        max-width: 95%;
+        margin: 10px auto;
+    }
+    
+    .bot-button {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
 }
 
 
@@ -107,7 +331,7 @@ body {
 }
 
 .achievement-card {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.966);
     border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }

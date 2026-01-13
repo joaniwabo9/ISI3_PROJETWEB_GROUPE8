@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <script type="module" src="script/projet1.js"></script>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script type="module" src="/script/auth.js"></script>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="style/projet1.css">
+    <link rel="stylesheet" href="/style/projet1.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>connexion</title>
@@ -46,14 +46,14 @@
         </div>
 
         <!-- Formulaire -->
-        <form>
+        <form id="loginForm">
 
-            <!-- Email -->
+            <!-- Identifiant -->
             <div class="mb-3">
-                <label class="form-label">Email</label>
+                <label class="form-label">Identifiant</label>
                 <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                    <input type="email" class="form-control" placeholder="votre@email.com">
+                    <span class="input-group-text"><i class="bi bi-at"></i></span>
+                    <input type="text" class="form-control" id="loginUsername" placeholder="votre_identifiant" required>
                 </div>
             </div>
 
@@ -62,8 +62,10 @@
                 <label class="form-label">Mot de passe</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="........">
-                    <span class="input-group-text btn-eye"><i class="bi bi-eye"></i></span>
+                    <input type="password" class="form-control" id="loginPassword" placeholder="........" required>
+                    <span class="input-group-text btn-eye" onclick="togglePassword('loginPassword')">
+                        <i class="bi bi-eye"></i>
+                    </span>
                 </div>
             </div>
 
@@ -78,9 +80,10 @@
 
             <!-- Acceder a mon compte -->
             <div class="d-grid gap-2">
-                <button class="cree w-100 mb-4 d-flex align-items-center justify-content-center">Acceder à mon compte
+                <button type="submit" class="cree w-100 mb-4 d-flex align-items-center justify-content-center">
+                    Accéder à mon compte
                     <i class="bi bi-arrow-right ms-2 arrow-icon"></i>
-                    </button>
+                </button>
             </div>
 
             <div class="divider mb-4">
