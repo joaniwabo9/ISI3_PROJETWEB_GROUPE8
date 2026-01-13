@@ -1,6 +1,7 @@
 /* Importation d'une police moderne */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
     --bg-dark: #0f172a;
     --card-bg: #1e293b;
@@ -8,6 +9,13 @@
     --border-color: #334155;
     --accent-orange: #e97c24;
     --text-light: #f8fafc;
+    --text-muted: #cbd5e1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -15,117 +23,171 @@ body {
     color: var(--text-light);
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
-    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
 }
-
 
 /* La carte du formulaire */
-
 .signup-card {
-    background-color: rgba(30, 41, 59, 0.7);
+    background-color: rgba(30, 41, 59, 0.95);
     border: 1px solid var(--border-color);
-    border-radius: 24px;
+    border-radius: 20px;
     width: 100%;
-    max-width: 480px;
+    max-width: 450px;
     backdrop-filter: blur(15px) brightness(1.1);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    padding: 45px 40px;
+    margin: 20px;
+    z-index: 10;
+    position: relative;
 }
 
-
 /* Le titre en dégradé */
-
 .title {
     background: linear-gradient(to right, #3b82f6, #a855f7, #f1a20f);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 2.2rem;
+    background-clip: text;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
 }
 
+.signup-card > .text-center > p {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-top: 8px;
+}
 
 /* Labels */
-
 .form-label {
     font-weight: 600;
-    font-size: 0.9rem;
-    color: #cbd5e1;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
-
-
-/* 1. Force l'input à rester transparent quoi qu'il arrive */
-
-.form-control,
-.form-control:focus,
-.form-control:not(:placeholder-shown) {
-    background-color: transparent;
-    background: transparent;
-    color: #cbd5e1;
-    outline: none !important;
-    box-shadow: none !important;
-    transition: none !important;
-    /* Supprime le délai de changement de couleur */
-}
-
-
-/* 2. Écrase le style forcé par Chrome/Edge sur les mots de passe */
-
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-    transition: background-color 5000s ease-in-out 0s;
-}
-
 
 /* Inputs personnalisés */
-
 .input-group {
     background-color: var(--input-bg);
-    border: 1px solid var(--border-color);
+    border: 1.5px solid var(--border-color);
     border-radius: 12px;
     overflow: hidden;
-    /* transition: all 0.3s ease; */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
 .input-group:focus-within {
     border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .input-group-text {
     background: transparent;
     border: none;
     color: #9ca9bb;
-    padding-left: 15px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    font-size: 1rem;
 }
 
 .form-control {
     background: transparent;
     border: none;
-    color: #cbd5e1;
-    padding: 12px 10px;
+    color: var(--text-muted);
+    padding: 12px 12px;
     box-shadow: none;
+    flex: 1;
+    font-size: 0.95rem;
 }
 
-.form-control:hover {
+.form-control:focus {
     background: transparent;
-    color: #cbd5e1;
+    color: var(--text-muted);
+    box-shadow: none;
+    outline: none;
 }
 
 .form-control::placeholder {
     color: #64748b;
 }
 
+/* Force l'input à rester transparent */
+.form-control,
+.form-control:focus,
+.form-control:not(:placeholder-shown) {
+    background-color: transparent;
+    background: transparent;
+    outline: none !important;
+    box-shadow: none !important;
+}
 
-/* Couleurs vertes pour les liens */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
 
+/* Icône de l'oeil - Positionnement correct */
+.btn-eye {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: #9ca9bb;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.btn-eye:hover {
+    color: var(--text-muted);
+}
+
+.btn-eye:active {
+    color: #3b82f6;
+}
+
+/* Couleurs pour les liens */
 .text-accent {
     color: var(--accent-orange);
     cursor: pointer;
+    font-weight: 600;
 }
 
-
 /* Checkbox personnalisée */
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
 
 .form-check-input {
     background-color: transparent;
-    border: 1px solid var(--border-color);
+    border: 1.5px solid var(--border-color);
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.form-check-input:hover {
+    border-color: #3b82f6;
 }
 
 .form-check-input:checked {
@@ -133,51 +195,95 @@ input:-webkit-autofill {
     border-color: var(--accent-orange);
 }
 
-.btn-eye {
+.form-check-label {
     cursor: pointer;
-    padding-right: 15px;
+    margin-left: 10px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    user-select: none;
 }
 
+/* Conteneur pour les champs avec points */
+.container-dot {
+    position: relative;
+}
 
-/* --- Bouton Principal Vert --- */
+.container-dot.dot-orange::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ff9800;
+    border-radius: 50%;
+    top: -4px;
+    right: -4px;
+    opacity: 0.3;
+}
 
+.container-dot.dot-blue::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #3b82f6;
+    border-radius: 50%;
+    top: -4px;
+    right: -4px;
+    opacity: 0.3;
+}
+
+/* --- Bouton Principal --- */
 .cree {
-    background-color: #b96a10;
-    /* Vert émeraude */
+    background: linear-gradient(135deg, #b96a10 0%, #e97c24 100%);
     color: white;
     border: none;
-    padding: 12px;
+    padding: 13px 24px;
     border-radius: 12px;
     font-weight: 600;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .cree:hover {
-    background-color: #e25219;
-    color: white;
+    background: linear-gradient(135deg, #e25219 0%, #f59e3f 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(226, 82, 25, 0.3);
 }
 
+.cree:active {
+    transform: translateY(0);
+}
+
+.cree:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
 
 /* Animation de la flèche */
-
 .arrow-icon {
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
 }
 
 .cree:hover .arrow-icon {
-    transform: translateX(5px);
-    /* Décale la flèche vers la droite au survol */
+    transform: translateX(4px);
 }
 
-
 /* --- Séparateur (Divider) --- */
-
 .divider {
     display: flex;
     align-items: center;
     text-align: center;
-    color: #dfe7f1;
+    color: #94a3b8;
     font-size: 0.85rem;
+    margin: 24px 0;
+    font-weight: 500;
 }
 
 .divider::before,
@@ -188,65 +294,78 @@ input:-webkit-autofill {
 }
 
 .divider:not(:empty)::before {
-    margin-right: .75em;
+    margin-right: 12px;
 }
 
 .divider:not(:empty)::after {
-    margin-left: .75em;
+    margin-left: 12px;
 }
 
-
 /* --- Boutons Sociaux (Google/GitHub) --- */
-
 .but {
     background-color: #1e293b;
-    /* Même couleur que le fond des inputs */
     color: #f8fafc;
-    border: 1px solid #334155;
-    padding: 10px;
-    border-radius: 15px;
+    border: 1.5px solid #334155;
+    padding: 11px 16px;
+    border-radius: 12px;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.4s ease;
+    gap: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .but:hover {
     background-color: #334155;
     border-color: #475569;
-    color: rgb(250, 137, 92);
+    color: #ff9800;
+    transform: translateY(-1px);
 }
 
+.but img {
+    width: 18px;
+    height: 18px;
+}
 
 /* --- Lien "Se connecter" --- */
-
-.text-primary {
-    color: #3b82f6;
-    /* Bleu électrique pour le lien */
-}
-
-
-/* footer des pages */
-
 p {
-    padding-left: 30px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #94a3b8;
 }
 
 p a {
     text-decoration: none;
     color: #cc98fc;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
+    font-weight: 600;
 }
 
 p a:hover {
     color: #8fb4e5;
 }
 
+/* Flex pour les champs de connexion */
+.d-flex.justify-content-between {
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.d-flex.justify-content-between p {
+    margin: 0;
+}
+
+.d-flex.justify-content-between p a {
+    font-size: 0.85rem;
+}
 
 /* 1. Le conteneur de fond */
-
 .bubble-wrapper {
     position: fixed;
     top: 0;
@@ -254,29 +373,21 @@ p a:hover {
     width: 100%;
     height: 100%;
     z-index: -1;
-    /* Derrière tout le contenu */
     overflow: hidden;
     background: #0f172a;
-    /* Fond sombre assorti à ton image */
 }
 
-
 /* 2. Style de base d'une bulle */
-
 .bubble {
     position: absolute;
     top: -150px;
-    /* Part de dessous l'écran */
     border-radius: 50%;
     opacity: 0.3;
     filter: blur(8px);
-    /* Effet de profondeur */
     animation: float-up infinite linear;
 }
 
-
 /* 3. Couleurs */
-
 .bubble.orange {
     background: #ff9800;
     box-shadow: 0 0 20px rgba(255, 152, 0, 0.4);
@@ -287,9 +398,7 @@ p a:hover {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
 }
 
-
 /* 4. Animation de montée */
-
 @keyframes float-up {
     0% {
         transform: translateY(0) rotate(0deg);
@@ -307,12 +416,7 @@ p a:hover {
     }
 }
 
-
 /* 5. Randomisation (Taille, Position, Vitesse) */
-
-
-/* Bulle 1 */
-
 .bubble:nth-child(1) {
     left: 10%;
     width: 80px;
@@ -320,9 +424,6 @@ p a:hover {
     animation-duration: 12s;
     animation-delay: 0s;
 }
-
-
-/* Bulle 2 */
 
 .bubble:nth-child(2) {
     left: 25%;
@@ -332,9 +433,6 @@ p a:hover {
     animation-delay: 2s;
 }
 
-
-/* Bulle 3 */
-
 .bubble:nth-child(3) {
     left: 40%;
     width: 120px;
@@ -342,9 +440,6 @@ p a:hover {
     animation-duration: 18s;
     animation-delay: 4s;
 }
-
-
-/* Bulle 4 */
 
 .bubble:nth-child(4) {
     left: 55%;
@@ -354,9 +449,6 @@ p a:hover {
     animation-delay: 1s;
 }
 
-
-/* Bulle 5 */
-
 .bubble:nth-child(5) {
     left: 70%;
     width: 90px;
@@ -364,9 +456,6 @@ p a:hover {
     animation-duration: 20s;
     animation-delay: 5s;
 }
-
-
-/* Bulle 6 */
 
 .bubble:nth-child(6) {
     left: 85%;
@@ -376,9 +465,6 @@ p a:hover {
     animation-delay: 3s;
 }
 
-
-/* Bulle 7 */
-
 .bubble:nth-child(7) {
     left: 15%;
     width: 70px;
@@ -386,9 +472,6 @@ p a:hover {
     animation-duration: 16s;
     animation-delay: 7s;
 }
-
-
-/* Bulle 8 */
 
 .bubble:nth-child(8) {
     left: 80%;
@@ -398,9 +481,6 @@ p a:hover {
     animation-delay: 2s;
 }
 
-
-/* Bulle 9 */
-
 .bubble:nth-child(9) {
     left: 45%;
     width: 30px;
@@ -408,9 +488,6 @@ p a:hover {
     animation-duration: 11s;
     animation-delay: 6s;
 }
-
-
-/* Bulle 10 */
 
 .bubble:nth-child(10) {
     left: 95%;
@@ -420,9 +497,6 @@ p a:hover {
     animation-delay: 0s;
 }
 
-
-/* Bulle 11 */
-
 .bubble:nth-child(11) {
     right: 100%;
     width: 200px;
@@ -430,9 +504,6 @@ p a:hover {
     animation-duration: 19s;
     animation-delay: 0s;
 }
-
-
-/* Bulle 12 */
 
 .bubble:nth-child(12) {
     right: 100%;
@@ -442,9 +513,6 @@ p a:hover {
     animation-delay: 0s;
 }
 
-
-/* Bulle 13*/
-
 .bubble:nth-child(13) {
     right: 100%;
     width: 30px;
@@ -453,13 +521,84 @@ p a:hover {
     animation-delay: 0s;
 }
 
-
-/* Bulle 14 */
-
 .bubble:nth-child(14) {
     right: 100%;
     width: 50px;
     height: 50px;
     animation-duration: 20s;
     animation-delay: 0s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .signup-card {
+        max-width: 100%;
+        padding: 35px 30px;
+        margin: 15px;
+        border-radius: 18px;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .form-label {
+        font-size: 0.8rem;
+    }
+
+    .form-control {
+        padding: 11px 10px;
+        font-size: 0.9rem;
+    }
+
+    .cree {
+        padding: 11px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-card {
+        padding: 30px 20px;
+        margin: 10px;
+        border-radius: 16px;
+        max-width: calc(100% - 20px);
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .form-label {
+        font-size: 0.75rem;
+    }
+
+    .form-control {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+
+    .input-group-text {
+        padding: 0 10px;
+        min-width: 40px;
+    }
+
+    .btn-eye {
+        padding: 0 10px;
+        min-width: 40px;
+    }
+
+    .cree {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+
+    .but {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+
+    p {
+        font-size: 0.8rem;
+    }
 }

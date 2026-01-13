@@ -11,30 +11,58 @@
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
+  <!-- Thème global -->
+  <link rel="stylesheet" href="theme.css">
+
   <!-- CSS personnalisé -->
   <link rel="stylesheet" href="dashboard.css">
 </head>
-<body>
+<body class="bg-dashboard text-light">
 
-<div class="container-fluid dashboard px-3 px-md-4 py-3">
+<div class="container-fluid py-4 px-3 px-md-4">
 
   <!-- MESSAGE D'ACCUEIL -->
   <section class="welcome-card mb-4">
     <h6><i class="bi bi-stars"></i> Control your flow</h6>
-    <h4>Bonjour, <span class="username">Daniella</span></h4>
+    <h4>Bonjour, <span class="username" id="userGreeting">Utilisateur</span></h4>
     <p class="alert-text">Attention à vos dépenses ce mois-ci.</p>
   </section>
 
-  <!-- MENU -->
-  <nav class="menu mb-4">
-    <button class="menu-item active"><i class="bi bi-house"></i> Tableau de Bord</button>
-    <button class="menu-item"><i class="bi bi-briefcase"></i> Mes Business</button>
-    <button class="menu-item"><i class="bi bi-clock-history"></i> Historique</button>
-    <button class="menu-item"><i class="bi bi-person"></i> Profil</button>
-  </nav>
+  <!-- BANNIÈRE SOLDES -->
+  <section class="balance-banner mb-4">
+    <div class="balance-item">
+      <div class="balance-icon current">
+        <i class="bi bi-wallet2"></i>
+      </div>
+      <div class="balance-content">
+        <div class="balance-label">Solde Actuel</div>
+        <div class="balance-value positive"><span data-balance-current>0</span> FCFA</div>
+      </div>
+    </div>
+    <div class="balance-divider"></div>
+    <div class="balance-item">
+      <div class="balance-icon available">
+        <i class="bi bi-cash-coin"></i>
+      </div>
+      <div class="balance-content">
+        <div class="balance-label">Solde Disponible</div>
+        <div class="balance-value available"><span data-balance-available>0</span> FCFA</div>
+      </div>
+    </div>
+    <div class="balance-divider"></div>
+    <div class="balance-item">
+      <div class="balance-icon savings">
+        <i class="bi bi-piggy-bank"></i>
+      </div>
+      <div class="balance-content">
+        <div class="balance-label">Épargne Totale</div>
+        <div class="balance-value savings"><span data-balance-savings>0</span> FCFA</div>
+      </div>
+    </div>
+  </section>
 
   <!-- CARTES DE STATISTIQUES -->
-  <section class="row g-4">
+  <section class="row g-4 mb-5">
 
     <!-- Solde actuel -->
     <div class="col-md-4">
@@ -43,8 +71,8 @@
           <span>Solde Actuel</span>
           <i class="bi bi-graph-up"></i>
         </div>
-        <h2>28 906 <span>FCFA</span></h2>
-        <small class="positive">+0.0% vs mois précédent</small>
+        <h2><span data-stat-current>0</span> <span>FCFA</span></h2>
+        <small class="positive" id="stat-current-change">+0.0% vs mois précédent</small>
       </div>
     </div>
 
@@ -52,59 +80,39 @@
     <div class="col-md-4">
       <div class="stat-card">
         <div class="card-header">
-          <span>Objectif d'épargne</span>
+          <span>Épargne Totale</span>
           <i class="bi bi-bullseye"></i>
         </div>
 
-        <h2>2 800 <span>FCFA</span></h2>
+        <h2><span data-stat-savings>0</span> <span>FCFA</span></h2>
 
         <div class="progress-circle">
-          <span>56%</span>
+          <span id="savings-percentage">0%</span>
         </div>
 
         <p class="mt-2">
-          Objectif : <strong>5 000 FCFA</strong><br>
-          Reste : <span class="positive">2 200 FCFA</span>
+          Ratio d'épargne : <strong id="savings-ratio">0%</strong><br>
+          Objectif : <span class="positive" id="savings-goal">20%</span>
         </p>
       </div>
     </div>
 
-    <!-- Prédiction -->
+    <!-- Dépenses -->
     <div class="col-md-4">
       <div class="stat-card">
         <div class="card-header">
-          <span>Prédiction Fin du Mois</span>
+          <span>Dépenses Totales</span>
           <i class="bi bi-calendar"></i>
         </div>
 
-        <h2>28 273,9 <span>FCFA</span></h2>
+        <h2><span data-stat-expenses>0</span> <span>FCFA</span></h2>
 
         <div class="prediction-bar"></div>
 
-        <small>Basé sur vos tendances actuelles</small>
+        <small>Ratio de dépenses : <strong id="expense-ratio">0%</strong></small>
       </div>
     </div>
 
-  </section>
-
-  <!-- Bouton flottant -->
-  <button class="floating-btn">
-    <i class="bi bi-plus"></i>
-  </button>
-
-</div>
-
-
-<div class="container-fluid dashboard p-4">
-
-  <!-- ZONE DE SCAN -->
-  <section class="scan-area mb-4 text-center">
-    <i class="bi bi-upload scan-icon"></i>
-    <h5>Scanner un document</h5>
-    <p>Glissez-déposez un reçu ou une facture ici</p>
-    <button class="btn btn-outline-light mt-2">
-      Ou parcourir les fichiers
-    </button>
   </section>
 
   <!-- HEADER TRANSACTIONS -->
@@ -122,479 +130,533 @@
   </div>
 
   <!-- LISTE TRANSACTIONS -->
-
- <div class="transaction-card active">
-    <div class="transaction-left">
-      <div class="icon blue">
-        <i class="bi bi-activity"></i>
+  <div class="mb-5">
+    <div class="transaction-card">
+      <div class="transaction-left">
+        <div class="icon blue">
+          <i class="bi bi-activity"></i>
+        </div>
+        <div>
+          <h6>Investissement</h6>
+          <small>Paiement investissement</small>
+        </div>
       </div>
-      <div>
-        <h6>Investissement</h6>
-        <small>Paiement investissement</small>
-       
+
+      <div class="transaction-right">
+        <span class="amount positive">+0 FCFA</span>
+        <small>-</small>
+        <i class="bi bi-three-dots-vertical"></i>
       </div>
     </div>
 
-    <div class="transaction-right">
-      <span class="amount positive">+1220 FCFA</span>
-      <small>9 janv.</small>
-      <i class="bi bi-three-dots-vertical"></i>
+    <div class="transaction-card">
+      <div class="transaction-left">
+        <div class="icon blue">
+          <i class="bi bi-car-front"></i>
+        </div>
+        <div>
+          <h6>Transport</h6>
+          <small>Achat transport</small>
+        </div>
+      </div>
+
+      <div class="transaction-right">
+        <span class="amount negative">-0 FCFA</span>
+        <small>-</small>
+        <i class="bi bi-three-dots-vertical"></i>
+      </div>
+    </div>
+
+    <div class="transaction-card">
+      <div class="transaction-left">
+        <div class="icon green">
+          <i class="bi bi-activity"></i>
+        </div>
+        <div>
+          <h6>Investissement</h6>
+          <small>Paiement investissement</small>
+        </div>
+      </div>
+
+      <div class="transaction-right">
+        <span class="amount positive">+0 FCFA</span>
+        <small>-</small>
+        <i class="bi bi-three-dots-vertical"></i>
+      </div>
+    </div>
+
+    <div class="transaction-card">
+      <div class="transaction-left">
+        <div class="icon green">
+          <i class="bi bi-heart"></i>
+        </div>
+        <div>
+          <h6>Santé</h6>
+          <small>Achat santé</small>
+        </div>
+      </div>
+
+      <div class="transaction-right">
+        <span class="amount negative">-0 FCFA</span>
+        <small>-</small>
+        <i class="bi bi-three-dots-vertical"></i>
+      </div>
+    </div>
+
+    <div class="transaction-card">
+      <div class="transaction-left">
+        <div class="icon blue">
+          <i class="bi bi-activity"></i>
+        </div>
+        <div>
+          <h6>Investissement</h6>
+          <small>Paiement investissement</small>
+        </div>
+      </div>
+
+      <div class="transaction-right">
+        <span class="amount positive">+0 FCFA</span>
+        <small>-</small>
+        <i class="bi bi-three-dots-vertical"></i>
+      </div>
     </div>
   </div>
 
-</div>
-  <div class="transaction-card ">
-    <div class="transaction-left">
-      <div class="icon blue">
-        <i class="bi bi-car-front"></i>
-      </div>
-      <div>
-        <h6>Transport</h6>
-        <small>Achat transport</small>
-      </div>
-    </div>
-
-    <div class="transaction-right">
-      <span class="amount negative">-42 FCFA</span>
-      <small>8 janv.</small>
-      <i class="bi bi-three-dots-vertical"></i>
-    </div>
-  </div>
-
-</div>
-<div class="transaction-card active">
-    <div class="transaction-left">
-      <div class="icon green">
-       <i class="bi bi-activity"></i>
-      </div>
-      <div>
-        <h6>Investissement</h6>
-        <small>Paiement investissement</small>
-      </div>
-    </div>
-
-    <div class="transaction-right">
-      <span class="amount positive">+1816 FCFA</span>
-      <small>8 janv.</small>
-      <i class="bi bi-three-dots-vertical"></i>
-    </div>
-  </div>
-
-</div>
-<div class="transaction-card">
-    <div class="transaction-left">
-      <div class="icon green">
-        <i class="bi bi-heart"></i>
-      </div>
-      <div>
-        <h6>Santé</h6>
-        <small>Achat santé</small>
-      </div>
-    </div>
-
-    <div class="transaction-right">
-      <span class="amount negative">-81 FCFA</span>
-      <small>5 janv.</small>
-      <i class="bi bi-three-dots-vertical"></i>
-    </div>
-  </div>
-
-</div>
-<div class="transaction-card active">
-    <div class="transaction-left">
-      <div class="icon blue">
-        <i class="bi bi-activity"></i>
-      </div>
-      <div>
-        <h6>Investissement</h6>
-        <small>Paiement investissement</small>
-      </div>
-    </div>
-
-    <div class="transaction-right">
-      <span class="amount positive">+1898 FCFA</span>
-      <small>3 janv.</small>
-      <i class="bi bi-three-dots-vertical"></i>
-    </div>
-  </div>
-
-</div>
-<div class="transaction-card active">
-    <div class="transaction-left">
-      <div class="icon green">
-        <i class="bi bi-currency-dollar"></i>
-      </div>
-      <div>
-        <h6>salaire</h6>
-        <small>Paiement salaire</small>
-      </div>
-    </div>
-
-    <div class="transaction-right">
-      <span class="amount positive">+1129 FCFA</span>
-      <small>3 janv.</small>
-      <i class="bi bi-three-dots-vertical"></i>
-    </div>
-  </div>
-
-</div>
-<div class="transaction-card">
-    <div class="transaction-left">
-      <div class="icon blue">
-        <i class="bi bi-house-fill"></i>
-      </div>
-      <div>
-        <h6>Logement</h6>
-        <small>Achat Logement</small>
-      </div>
-    </div>
-
-    <div class="transaction-right">
-      <span class="amount negative">-129 FCFA</span>
-      <small>2 janv.</small>
-      <i class="bi bi-three-dots-vertical"></i>
-    </div>
-  </div>
-
-</div><div class="transaction-card active">
-    <div class="transaction-left">
-      <div class="icon green">
-        <i class="bi bi-currency-dollar"></i>
-      </div>
-      <div>
-        <h6>salaire</h6>
-        <small>Paiement salaire</small>
-      </div>
-    </div>
-
-    <div class="transaction-right">
-      <span class="amount positive">+3500 FCFA</span>
-      <small>31 dec .</small>
-      <i class="bi bi-three-dots-vertical"></i>
-    </div>
-  </div>
-
-</div>
-<div class="transaction-card active">
-    <div class="transaction-left">
-      <div class="icon green">
-       <i class="bi bi-currency-dollar"></i>
-      </div>
-      <div>
-        <h6>salaire</h6>
-        <small>Paiement salaire</small>
-      </div>
-    </div>
-
-    <div class="transaction-right">
-      <span class="amount positive">+1095  FCFA</span>
-      <small>30 dec.</small>
-      <i class="bi bi-three-dots-vertical"></i>
-    </div>
-  </div>
-
-</div>
-<div class="transaction-card active">
-    <div class="transaction-left">
-      <div class="icon green">
-        <i class="bi bi-activity"></i>
-      </div>
-      <div>
-        <h6>Investissement</h6>
-        <small>Paiement investissement</small>
-      </div>
-    </div>
-
-    <div class="transaction-right">
-      <span class="amount positive">+2404 FCFA</span>
-      <small>30 dec.</small>
-      <i class="bi bi-three-dots-vertical"></i>
-    </div>
-  </div>
-
-</div>
-<div class="transaction-card">
-    <div class="transaction-left">
-      <div class="icon blue">
-        <i class="bi bi-house-fill"></i>
-      </div>
-      <div>
-        <h6>Logement</h6>
-        <small>Achat Logement</small>
-      </div>
-    </div>
-
-    <div class="transaction-right">
-      <span class="amount negative">-13 FCFA</span>
-      <small>24 dec.</small>
-      <i class="bi bi-three-dots-vertical"></i>
-    </div>
-  </div>
-
-</div>
- <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="fw-semibold">Cagnottes d’épargne</h3>
-        <button class="btn btn-primary rounded-pill px-4">
-            <i class="bi bi-plus-lg"></i> Nouvelle cagnotte
-        </button>
+  <!-- CAGNOTTES D'ÉPARGNE -->
+  <div class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3 class="fw-semibold">Cagnottes d'épargne</h3>
+      <button class="btn btn-primary rounded-pill px-4">
+        <i class="bi bi-plus-lg"></i> Nouvelle cagnotte
+      </button>
     </div>
 
     <!-- Cartes -->
     <div class="row g-4">
 
-        <!-- Carte 1 -->
-        <div class="col-md-4">
-            <div class="saving-card">
-                <div class="icon bg-info">
-                    <i class="bi bi-airplane"></i>
-                </div>
+      <!-- Carte 1 -->
+      <div class="col-md-4">
+        <div class="saving-card">
+          <div class="icon bg-info">
+            <i class="bi bi-airplane"></i>
+          </div>
 
-                <h5>Voyage au Japon</h5>
-                <h6>Objectif : 5 000 FCFA</h6>
+          <h5>Voyage au Japon</h5>
+          <h6>Objectif : 0 FCFA</h6>
 
-                <div class="jar">
-                    <div class="fill fill-blue" style="height:56%;">
-                        <span>56%<br><small>2 800 FCFA</small></span>
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-between small mt-3">
-                    <span>Reste à économiser</span>
-                    <span>2 200 FCFA</span>
-                </div>
-
-                <div class="progress mt-2">
-                    <div class="progress-bar bg-info" style="width:56%"></div>
-                </div>
-
-                <button class="btn btn-outline-light w-100 mt-3 rounded-pill">
-                    <i class="bi bi-plus-circle"></i> Ajouter des fonds
-                </button>
+          <div class="jar">
+            <div class="fill fill-blue" style="height:0%;">
+              <span>0%<br><small>0 FCFA</small></span>
             </div>
+          </div>
+
+          <div class="d-flex justify-content-between small mt-3">
+            <span>Reste à économiser</span>
+            <span class="text-success fw-bold">0 FCFA</span>
+          </div>
+
+          <div class="progress mt-2">
+            <div class="progress-bar bg-info" style="width:0%"></div>
+          </div>
+
+          <button class="btn btn-outline-light w-100 mt-3 rounded-pill">
+            <i class="bi bi-plus-circle"></i> Ajouter des fonds
+          </button>
         </div>
+      </div>
 
-        <!-- Carte 2 -->
-        <div class="col-md-4">
-            <div class="saving-card">
-                <div class="icon bg-success">
-                    <i class="bi bi-car-front-fill"></i>
-                </div>
+      <!-- Carte 2 -->
+      <div class="col-md-4">
+        <div class="saving-card">
+          <div class="icon bg-success">
+            <i class="bi bi-car-front-fill"></i>
+          </div>
 
-                <h5>Nouvelle voiture</h5>
-                <h6>Objectif : 15 000 FCFA</h6>
+          <h5>Nouvelle voiture</h5>
+          <h6>Objectif : 0 FCFA</h6>
 
-                <div class="jar">
-                    <div class="fill fill-green" style="height:57%;">
-                        <span>57%<br><small>8 500 FCFA</small></span>
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-between small mt-3">
-                    <span>Reste à économiser</span>
-                    <span>6 500 FCFA</span>
-                </div>
-
-                <div class="progress mt-2">
-                    <div class="progress-bar bg-success" style="width:57%"></div>
-                </div>
-
-                <button class="btn btn-outline-light w-100 mt-3 rounded-pill">
-                    <i class="bi bi-plus-circle"></i> Ajouter des fonds
-                </button>
+          <div class="jar">
+            <div class="fill fill-green" style="height:0%;">
+              <span>0%<br><small>0 FCFA</small></span>
             </div>
+          </div>
+
+          <div class="d-flex justify-content-between small mt-3">
+            <span>Reste à économiser</span>
+            <span class="text-success fw-bold">0 FCFA</span>
+          </div>
+
+          <div class="progress mt-2">
+            <div class="progress-bar bg-success" style="width:0%"></div>
+          </div>
+
+          <button class="btn btn-outline-light w-100 mt-3 rounded-pill">
+            <i class="bi bi-plus-circle"></i> Ajouter des fonds
+          </button>
         </div>
+      </div>
 
-        <!-- Carte 3 -->
-        <div class="col-md-4">
-            <div class="saving-card">
-                <div class="icon bg-primary">
-                    <i class="bi bi-house-door-fill"></i>
-                </div>
+      <!-- Carte 3 -->
+      <div class="col-md-4">
+        <div class="saving-card">
+          <div class="icon bg-primary">
+            <i class="bi bi-house-door-fill"></i>
+          </div>
 
-                <h5>Apport maison</h5>
-                <h6>Objectif : 50 000 FCFA</h6>
+          <h5>Apport maison</h5>
+          <h6>Objectif : 0 FCFA</h6>
 
-                <div class="jar">
-                    <div class="fill fill-purple" style="height:36%;">
-                        <span>36%<br><small>18 000 FCFA</small></span>
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-between small mt-3">
-                    <span>Reste à économiser</span>
-                    <span>32 000 FCFA</span>
-                </div>
-
-                <div class="progress mt-2">
-                    <div class="progress-bar bg-primary" style="width:36%"></div>
-                </div>
-
-                <button class="btn btn-outline-light w-100 mt-3 rounded-pill">
-                    <i class="bi bi-plus-circle"></i> Ajouter des fonds
-                </button>
+          <div class="jar">
+            <div class="fill fill-purple" style="height:0%;">
+              <span>0%<br><small>0 FCFA</small></span>
             </div>
+          </div>
+
+          <div class="d-flex justify-content-between small mt-3">
+            <span>Reste à économiser</span>
+            <span class="text-success fw-bold">0 FCFA</span>
+          </div>
+
+          <div class="progress mt-2">
+            <div class="progress-bar bg-primary" style="width:0%"></div>
+          </div>
+
+          <button class="btn btn-outline-light w-100 mt-3 rounded-pill">
+            <i class="bi bi-plus-circle"></i> Ajouter des fonds
+          </button>
         </div>
+      </div>
 
     </div>
-</div>
+  </div>
 
-</body>
-<body class="bg-dashboard text-light">
-
-<div class="container py-4">
+  <!-- PRÊTS -->
+  <div class="mb-5">
+    <h3 class="fw-semibold mb-4">Mes Prêts</h3>
 
     <!-- Carte Prêt Automobile -->
     <div class="loan-card mb-4">
 
-        <div class="d-flex justify-content-between">
-            <div>
-                <h5 class="mb-1">Prêt Automobile</h5>
-                 <h6> 
-                    <i class="bi bi-calendar-event"></i> 0 mois restants
-                </h6>
-            </div>
-            <div class="text-end">
-                <h5 class="text-info mb-0">8 500 FCFA</h5>
-                <h6>sur 15 000 FCFA</h6>
-            </div>
+      <div class="d-flex justify-content-between">
+        <div>
+          <h5 class="mb-1">Prêt Automobile</h5>
+          <h6> 
+            <i class="bi bi-calendar-event"></i> 0 mois restants
+          </h6>
         </div>
+        <div class="text-end">
+          <h5 class="text-info mb-0">0 FCFA</h5>
+          <h6>sur 0 FCFA</h6>
+        </div>
+      </div>
 
-        <div class="d-flex justify-content-between mt-3 small text-muted">
-      <h6 > janv. 2023</h6>
-        <h6> dec. 2025</h6>
-        </div>
+      <div class="d-flex justify-content-between mt-3 small text-muted">
+        <h6>Remboursé</h6>
+        <h6>Restant à payer</h6>
+      </div>
 
-        <div class="progress loan-progress mt-2">
-            <div class="progress-bar bg-success" style="width:57%">57%</div>
-        </div>
+      <div class="progress loan-progress mt-2">
+        <div class="progress-bar bg-success" style="width:0%">0%</div>
+      </div>
 
-        <div class="d-flex justify-content-between mt-2 small">
-            <span>Temps écoulé : <strong>100%</strong></span>
-            <span class="text-success">Remboursé : 57%</span>
-        </div>
+      <div class="d-flex justify-content-between mt-2 small">
+        <span>Temps écoulé : <strong>0%</strong></span>
+        <span class="text-success">Remboursé : 0%</span>
+      </div>
 
-        <hr>
- <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center gap-2">
-                <div class="add-btn">
-                    <i class="bi bi-plus-lg"></i>
-                </div>
-                
-            <div>
-                <h6> Mensualité</h6>
-                <h6>350 FCFA</h6>
-            </div>
-            </div>
-            <div class="text-end">
-                <h6> Montant restant</h6>
-                <h6 class="text-warning">6 500 FCFA</h6>
-            </div>
+      <hr>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <div class="add-btn">
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          
+          <div>
+            <h6>Mensualité</h6>
+            <h6>0 FCFA</h6>
+          </div>
         </div>
+        <div class="text-end">
+          <h6>Montant restant</h6>
+          <h6 class="text-warning">0 FCFA</h6>
+        </div>
+      </div>
         
     </div>
 
     <!-- Carte Prêt Étudiant -->
-    <div class="loan-card">
-
-        <div class="d-flex justify-content-between">
-            <div>
-                <h5 class="mb-1">Prêt Étudiant</h5>
-                <h6>
-                    <i class="bi bi-calendar-event"></i> 20 mois restants
-                </h6>
-            </div>
-            <div class="text-end">
-                <h5 class="text-info mb-0">12 000 FCFA</h5>
-                <h6>sur 25 000 FCFA</h6>
-            </div>
-        </div>
-
-        <div class="d-flex justify-content-between mt-3 small text-muted">
-            <span>sept. 2022</span>
-            <span>sept. 2027</span>
-        </div>
-
-        <div class="progress loan-progress mt-2">
-            <div class="progress-bar bg-success" style="width:48%">48%</div>
-        </div>
-
-        <div class="d-flex justify-content-between mt-2 small">
-            <span>Temps écoulé : <strong>67%</strong></span>
-            <span class="text-success">Remboursé : 48%</span>
-        </div>
-
-        <hr>
-
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center gap-2">
-                <div class="add-btn">
-                    <i class="bi bi-plus-lg"></i>
-                </div>
-                <div>
-                    <h6> Mensualité</h6>
-                    <h6>420 FCFA</h6>
-                </div>
-            </div>
-
-            <div class="text-end">
-                <h6> Montant restant</h6>
-                <h6 class="text-warning">13 000 FCFA</h6>
-            </div>
-        </div>
-    </div>
-
-</div>
-<div class="container py-4">
-
-    <!-- Carte Prêt Automobile -->
     <div class="loan-card mb-4">
 
-        <div class="d-flex justify-content-between">
-            <div>
-                <h5 class="mb-1">Prêt immobilier</h5>
-                <h6>
-                    <i class="bi bi-calendar-event"></i> 185 mois restants
-                </h6>
-            </div>
-            <div class="text-end">
-                <h5 class="text-info mb-0">45000FCFA</h5>
-                <h6>sur 200000 FCFA</h6>
-            </div>
+      <div class="d-flex justify-content-between">
+        <div>
+          <h5 class="mb-1">Prêt Étudiant</h5>
+          <h6>
+            <i class="bi bi-calendar-event"></i> 0 mois restants
+          </h6>
+        </div>
+        <div class="text-end">
+          <h5 class="text-info mb-0">0 FCFA</h5>
+          <h6>sur 0 FCFA</h6>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between mt-3 small text-muted">
+        <h6>Remboursé</h6>
+        <h6>Restant à payer</h6>
+      </div>
+
+      <div class="progress loan-progress mt-2">
+        <div class="progress-bar bg-success" style="width:0%">0%</div>
+      </div>
+
+      <div class="d-flex justify-content-between mt-2 small">
+        <span>Temps écoulé : <strong>0%</strong></span>
+        <span class="text-success">Remboursé : 0%</span>
+      </div>
+
+      <hr>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <div class="add-btn">
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          <div>
+            <h6>Mensualité</h6>
+            <h6>0 FCFA</h6>
+          </div>
         </div>
 
-        <div class="d-flex justify-content-between mt-3 small text-muted">
-            <span>juin 2021</span>
-            <span>juin 2041</span>
+        <div class="text-end">
+          <h6>Montant restant</h6>
+          <h6 class="text-warning">0 FCFA</h6>
         </div>
-
-        <div class="progress loan-progress mt-2">
-            <div class="progress-bar bg-success" style="width:57%">57%</div>
-        </div>
-
-        <div class="d-flex justify-content-between mt-2 small">
-            <span>Temps écoulé : <strong>23%</strong></span>
-            <span class="text-success">Remboursé : 23%</span>
-        </div>
-
-        <hr>
-
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center gap-2">
-                <div class="add-btn">
-                    <i class="bi bi-plus-lg"></i>
-                </div>
-            <div>
-               <h6> Mensualité</h6>
-                <h6>890 FCFA</h6>
-            </div>
-            </div>
-            <div class="text-end">
-                <h6> Montant restant</h6>
-                <h6 class="text-warning">155000 FCFA</h6>
-            </div>
-        </div>
+      </div>
     </div>
-</html>
 
+    <!-- Carte Prêt Immobilier -->
+    <div class="loan-card">
+
+      <div class="d-flex justify-content-between">
+        <div>
+          <h5 class="mb-1">Prêt immobilier</h5>
+          <h6>
+            <i class="bi bi-calendar-event"></i> 0 mois restants
+          </h6>
+        </div>
+        <div class="text-end">
+          <h5 class="text-info mb-0">0 FCFA</h5>
+          <h6>sur 0 FCFA</h6>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between mt-3 small text-muted">
+        <h6>Remboursé</h6>
+        <h6>Restant à payer</h6>
+      </div>
+
+      <div class="progress loan-progress mt-2">
+        <div class="progress-bar bg-success" style="width:0%">0%</div>
+      </div>
+
+      <div class="d-flex justify-content-between mt-2 small">
+        <span>Temps écoulé : <strong>0%</strong></span>
+        <span class="text-success">Remboursé : 0%</span>
+      </div>
+
+      <hr>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <div class="add-btn">
+            <i class="bi bi-plus-lg"></i>
+          </div>
+          <div>
+            <h6>Mensualité</h6>
+            <h6>0 FCFA</h6>
+          </div>
+        </div>
+        <div class="text-end">
+          <h6>Montant restant</h6>
+          <h6 class="text-warning">0 FCFA</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bouton flottant -->
+  <button class="floating-btn" id="addTransactionBtn" data-bs-toggle="modal" data-bs-target="#addTransactionModal">
+    <i class="bi bi-plus"></i>
+  </button>
+
+</div>
+
+<!-- MODAL AJOUTER TRANSACTION -->
+<div class="modal fade" id="addTransactionModal" tabindex="-1" aria-labelledby="addTransactionLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark-card border-light">
+      <div class="modal-header border-light">
+        <h5 class="modal-title text-white" id="addTransactionLabel">Ajouter une transaction</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs mb-3" id="transactionTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active text-white" id="form-tab" data-bs-toggle="tab" data-bs-target="#form-content" type="button" role="tab">
+              <i class="bi bi-pencil me-2"></i>Formulaire
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-white" id="scanner-tab" data-bs-toggle="tab" data-bs-target="#scanner-content" type="button" role="tab">
+              <i class="bi bi-camera me-2"></i>Scanner un reçu
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="transactionTabContent">
+          <!-- Contenu du formulaire -->
+          <div class="tab-pane fade show active" id="form-content" role="tabpanel">
+            <form id="addTransactionForm">
+              <!-- Type de transaction -->
+              <div class="mb-3">
+                <label for="transactionType" class="form-label text-white">Type de transaction</label>
+                <select class="form-select bg-input border-light text-white" id="transactionType" required>
+                  <option value="">Sélectionner un type</option>
+                  <option value="revenu">Revenu</option>
+                  <option value="salaire">Salaire</option>
+                  <option value="epargne">Épargne</option>
+                  <option value="depense">Dépense</option>
+                </select>
+              </div>
+
+              <!-- Catégorie -->
+              <div class="mb-3">
+                <label for="transactionCategory" class="form-label text-white">Catégorie</label>
+                <select class="form-select bg-input border-light text-white" id="transactionCategory" required>
+                  <option value="">Sélectionner une catégorie</option>
+                  <option value="investissement">Investissement</option>
+                  <option value="transport">Transport</option>
+                  <option value="santé">Santé</option>
+                  <option value="logement">Logement</option>
+                  <option value="alimentation">Alimentation</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+
+              <!-- Description -->
+              <div class="mb-3">
+                <label for="transactionDescription" class="form-label text-white">Description</label>
+                <input type="text" class="form-control bg-input border-light text-white" id="transactionDescription" placeholder="Description de la transaction" required>
+              </div>
+
+              <!-- Montant -->
+              <div class="mb-3">
+                <label for="transactionAmount" class="form-label text-white">Montant (FCFA)</label>
+                <input type="number" class="form-control bg-input border-light text-white" id="transactionAmount" placeholder="0" min="0" step="0.01" required>
+              </div>
+
+              <!-- Date -->
+              <div class="mb-3">
+                <label for="transactionDate" class="form-label text-white">Date</label>
+                <input type="date" class="form-control bg-input border-light text-white" id="transactionDate" required>
+              </div>
+            </form>
+          </div>
+
+          <!-- Contenu du scanner -->
+          <div class="tab-pane fade" id="scanner-content" role="tabpanel">
+            <div class="text-center py-4">
+              <div class="mb-4">
+                <i class="bi bi-camera-fill text-primary" style="font-size: 3rem;"></i>
+              </div>
+              
+              <h6 class="text-white mb-3">Scanner un reçu ou une quittance</h6>
+              <p class="text-muted small mb-4">Prenez une photo de votre reçu pour extraire automatiquement les informations</p>
+              
+              <!-- Input file caché -->
+              <input type="file" id="receiptImageInput" accept="image/*" style="display: none;">
+              
+              <!-- Bouton pour ouvrir la caméra -->
+              <button type="button" class="btn btn-primary-gradient mb-3 w-100" id="openCameraBtn">
+                <i class="bi bi-camera me-2"></i>Ouvrir la caméra
+              </button>
+              
+              <!-- Bouton pour uploader une image -->
+              <button type="button" class="btn btn-outline-light w-100" id="uploadImageBtn">
+                <i class="bi bi-image me-2"></i>Choisir une image
+              </button>
+              
+              <!-- Zone d'aperçu -->
+              <div id="receiptPreview" class="mt-4" style="display: none;">
+                <img id="previewImage" src="" alt="Aperçu" class="img-fluid rounded mb-3" style="max-height: 300px;">
+                <button type="button" class="btn btn-sm btn-danger w-100" id="clearImageBtn">
+                  <i class="bi bi-trash me-2"></i>Effacer l'image
+                </button>
+              </div>
+              
+              <!-- Zone de résultats OCR -->
+              <div id="ocrResults" class="mt-4" style="display: none;">
+                <div class="alert alert-info text-start">
+                  <h6 class="text-white mb-3">Informations extraites :</h6>
+                  <div class="mb-2">
+                    <small class="text-muted">Montant détecté :</small>
+                    <p class="text-white mb-0" id="ocrAmount">-</p>
+                  </div>
+                  <div class="mb-2">
+                    <small class="text-muted">Description :</small>
+                    <p class="text-white mb-0" id="ocrDescription">-</p>
+                  </div>
+                  <div class="mb-2">
+                    <small class="text-muted">Date :</small>
+                    <p class="text-white mb-0" id="ocrDate">-</p>
+                  </div>
+                  <button type="button" class="btn btn-sm btn-success w-100 mt-3" id="useOcrDataBtn">
+                    <i class="bi bi-check-circle me-2"></i>Utiliser ces données
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-light">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary-gradient" id="saveTransactionBtn">Enregistrer la transaction</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="js/db.js"></script>
+<script src="js/session.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/transactions.js"></script>
+<script src="js/ocr.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/dashboard-dynamic.js"></script>
+<script src="js/sync-data.js"></script>
+<script src="js/savings-cards.js"></script>
+<script src="js/loans.js"></script>
+<script>
+// Récupérer et afficher le nom de l'utilisateur connecté
+document.addEventListener('DOMContentLoaded', function() {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    
+    if (loggedInUser) {
+        try {
+            const user = JSON.parse(loggedInUser);
+            const userGreeting = document.getElementById('userGreeting');
+            if (userGreeting && user.prenom) {
+                userGreeting.textContent = user.prenom;
+            }
+        } catch (e) {
+            console.error('Erreur lors de la lecture de l\'utilisateur:', e);
+        }
+    }
+});
+</script>
 </body>
 </html>

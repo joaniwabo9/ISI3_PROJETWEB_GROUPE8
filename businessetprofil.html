@@ -8,8 +8,8 @@
     <title>Portefeuille</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="theme.css">
     <link rel="stylesheet" href="businessetprofil.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -19,34 +19,9 @@
             <i class="fas fa-wand-magic-sparkles me-2"></i>
             <span class="small opacity-75">Control your flow</span>
         </div>
-        <h2 class="fw-bold mb-1" data-i18n="welcome">Bonjour, Daniella</h2>
+        <h2 class="fw-bold mb-1" data-i18n="welcome">Bonjour, <span data-user-name>Utilisateur</span></h2>
         <p class="text-warning mb-0 small" data-i18n="warning">Attention à vos dépenses ce mois-ci.</p>
         
-    </div>
-
-    <div class="nav-dark-container mb-4 shadow">
-        <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
-            <li class="nav-item">
-                <button class="nav-link" id="tab-dashboard" data-bs-toggle="pill" data-bs-target="#content-dashboard">
-                    <i class="fas fa-home me-2"></i><span data-i18n="navDash">Tableau de Bord</span>
-                </button>
-            </li>
-            <li class="nav-item">
-                <button class="nav-link active" id="tab-business" data-bs-toggle="pill" data-bs-target="#content-business">
-                    <i class="fas fa-briefcase me-2"></i><span data-i18n="navBusiness">Mes Business</span>
-                </button>
-            </li>
-            <li class="nav-item">
-                <button class="nav-link" id="tab-history" data-bs-toggle="pill" data-bs-target="#content-history">
-                    <i class="fas fa-clock-rotate-left me-2"></i><span data-i18n="navHistory">Historique</span>
-                </button>
-            </li>
-            <li class="nav-item">
-                <button class="nav-link" id="tab-profil" data-bs-toggle="pill" data-bs-target="#content-profil">
-                    <i class="fas fa-user me-2"></i><span data-i18n="navProfil">Profil</span>
-                </button>
-            </li>
-        </ul>
     </div>
 
     <div class="tab-content">
@@ -64,10 +39,10 @@
                     </div>
                     <div>
                         <h4 class="text-white mb-0">Gérance de Business</h4>
-                        <small class="text-muted">0 business en gestion</small>
+                        <small class="text-muted"><span id="businessCount">0</span> business en gestion</small>
                     </div>
                 </div>
-                <button class="btn btn-primary-gradient px-4 py-2 shadow-sm">
+                <button class="btn btn-primary-gradient px-4 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#addBusinessModal">
                     <i class="fas fa-plus me-2"></i>Nouveau Business
                 </button>
             </div>
@@ -96,19 +71,20 @@
 
         <div class="tab-pane fade" id="content-profil">
     <div class="card bg-dark-card border-0 overflow-hidden mb-4 shadow-lg">
-        <div class="profile-banner-tri"></div> <div class="card-body p-4 pt-0">
+        <div class="profile-banner-tri"></div>
+        <div class="card-body p-4 pt-0">
             <div class="d-flex align-items-end mb-4 profile-header-overlap">
-                <div class="avatar-dk-large shadow-lg">DM</div>
-                <div class="ms-4 mb-2 flex-grow-1">
-                    <h3 class="text-white fw-bold mb-1">Daniella Moukouri <i class="fas fa-crown text-warning fs-5"></i></h3>
-                    <p class="text-muted mb-2">Entrepreneure passionnée par la finance et l'innovation</p>
+                <div class="avatar-dk-large shadow-lg" id="profileAvatar">DM</div>
+                <div class="flex-grow-1">
+                    <h3 class="text-white fw-bold mb-1" id="profileName">Utilisateur <i class="fas fa-crown text-warning fs-5"></i></h3>
+                    <p class="text-muted mb-2" id="profileBio">Utilisateur de la plateforme</p>
                     <div class="d-flex text-muted small">
-                        <span class="me-3"><i class="fas fa-map-marker-alt me-1"></i> Yaoundé, Cameroun</span>
-                        <span><i class="fas fa-calendar-alt me-1"></i> Membre depuis Janvier 2024</span>
+                        <span class="me-3"><i class="fas fa-map-marker-alt me-1"></i> <span id="profileLocation">Non spécifié</span></span>
+                        <span><i class="fas fa-calendar-alt me-1"></i> Membre depuis <span id="profileDate">Janvier 2024</span></span>
                     </div>
                 </div>
-                <div class="mb-2 d-flex gap-2">
-                    <button class="btn btn-primary-gradient btn-sm px-3"><i class="fas fa-pen me-2"></i>Modifier le profil</button>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary-gradient btn-sm px-3" id="editProfileBtn"><i class="fas fa-pen me-2"></i>Modifier le profil</button>
                     <button class="btn btn-dark-nav btn-sm"><i class="fas fa-share-alt"></i></button>
                 </div>
             </div>
@@ -121,7 +97,7 @@
             <div class="stat-icon-wrapper stat-icon-blue mx-auto mb-2">
                 <i class="fas fa-wave-square"></i>
             </div>
-            <h4 class="text-white fw-bold mb-0">1,247</h4>
+            <h4 class="text-white fw-bold mb-0" data-stat-count>0</h4>
             <small class="text-muted">Transactions</small>
         </div>
     </div>
@@ -130,26 +106,26 @@
             <div class="stat-icon-wrapper stat-icon-green mx-auto mb-2">
                 <i class="fas fa-dollar-sign"></i>
             </div>
-            <h4 class="text-white fw-bold mb-0">485K FCFA</h4>
+            <h4 class="text-white fw-bold mb-0"><span data-stat-savings>0</span> FCFA</h4>
             <small class="text-muted">Épargne totale</small>
         </div>
     </div>
     <div class="col-md-3 col-6">
         <div class="stat-card p-3 text-center">
             <div class="stat-icon-wrapper stat-icon-yellow mx-auto mb-2">
-                <i class="fas fa-calendar-alt"></i>
+                <i class="fas fa-wallet2"></i>
             </div>
-            <h4 class="text-white fw-bold mb-0">156</h4>
-            <small class="text-muted">Jours actifs</small>
+            <h4 class="text-white fw-bold mb-0"><span data-stat-current>0</span> FCFA</h4>
+            <small class="text-muted">Solde actuel</small>
         </div>
     </div>
     <div class="col-md-3 col-6">
         <div class="stat-card p-3 text-center">
             <div class="stat-icon-wrapper stat-icon-purple mx-auto mb-2">
-                <i class="fas fa-bullseye"></i>
+                <i class="fas fa-arrow-trend-up"></i>
             </div>
-            <h4 class="text-white fw-bold mb-0">12</h4>
-            <small class="text-muted">Objectifs atteints</small>
+            <h4 class="text-white fw-bold mb-0"><span data-stat-income>0</span> FCFA</h4>
+            <small class="text-muted">Revenus totaux</small>
         </div>
     </div>
 </div>
@@ -171,24 +147,20 @@
         </h5>
         <div class="row g-4">
             <div class="col-md-6">
-                <label class="text-muted small d-block">Nom complet</label>
-                <span class="text-white fw-bold">Daniella Moukouri</span>
+                <label class="text-muted small d-block">Prénom</label>
+                <span class="text-white fw-bold" id="infoPrénom">-</span>
             </div>
             <div class="col-md-6">
-                <label class="text-muted small d-block">Email</label>
-                <span class="text-white">daniella.Moukouri@email.com</span>
+                <label class="text-muted small d-block">Nom</label>
+                <span class="text-white fw-bold" id="infoNom">-</span>
             </div>
             <div class="col-md-6">
-                <label class="text-muted small d-block">Téléphone</label>
-                <span class="text-white">+237 692 58 55 84 </span>
+                <label class="text-muted small d-block">Nom d'utilisateur</label>
+                <span class="text-white" id="infoUsername">-</span>
             </div>
             <div class="col-md-6">
-                <label class="text-muted small d-block">Localisation</label>
-                <span class="text-white">Yaoundé, Cameroun</span>
-            </div>
-            <div class="col-md-12">
-                <label class="text-muted small d-block">Biographie</label>
-                <p class="text-white small mb-0">Entrepreneure passionnée par la finance et l'innovation</p>
+                <label class="text-muted small d-block">Solde actuel</label>
+                <span class="text-white fw-bold" id="infoBalance">0 FCFA</span>
             </div>
         </div>
     </div>
@@ -279,282 +251,264 @@
 
           
           
-          
 
 
-<div class="bot-button shadow" onclick="openAIAssistant()"><i class="fas fa-robot"></i></div>
-
-<!-- Modal IA Assistant -->
-<div class="modal fade" id="aiAssistantModal" tabindex="-1" aria-labelledby="aiAssistantModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable">
-        <div class="modal-content bg-dark-card border-0">
-            <div class="modal-header border-bottom border-secondary">
-                <h5 class="modal-title text-white" id="aiAssistantModalLabel">
-                    <i class="fas fa-brain me-2 text-primary"></i>Assistant IA Financier
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-0">
-                <div class="row g-0 h-100">
-                    <!-- Sidebar Navigation -->
-                    <div class="col-md-3 bg-dark-nav p-3">
-                        <div class="nav flex-column nav-pills" id="ai-nav-tab" role="tablist" aria-orientation="vertical">
-                            <button class="nav-link active mb-2" id="ai-chat-tab" data-bs-toggle="pill" data-bs-target="#ai-chat" type="button" role="tab">
-                                <i class="fas fa-comments me-2"></i>Chat IA
-                            </button>
-                            <button class="nav-link mb-2" id="ai-analysis-tab" data-bs-toggle="pill" data-bs-target="#ai-analysis" type="button" role="tab">
-                                <i class="fas fa-search-dollar me-2"></i>Analyse des Dépenses
-                            </button>
-                            <button class="nav-link mb-2" id="ai-savings-tab" data-bs-toggle="pill" data-bs-target="#ai-savings" type="button" role="tab">
-                                <i class="fas fa-piggy-bank me-2"></i>Suggestions d'Épargne
-                            </button>
-                            <button class="nav-link mb-2" id="ai-business-tab" data-bs-toggle="pill" data-bs-target="#ai-business" type="button" role="tab">
-                                <i class="fas fa-lightbulb me-2"></i>Idées Business
-                            </button>
-                            <button class="nav-link mb-2" id="ai-alerts-tab" data-bs-toggle="pill" data-bs-target="#ai-alerts" type="button" role="tab">
-                                <i class="fas fa-bell me-2"></i>Alertes Intelligentes
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Main Content -->
-                    <div class="col-md-9 p-4">
-                        <div class="tab-content" id="ai-nav-tabContent">
-                            <!-- Chat IA -->
-                            <div class="tab-pane fade show active" id="ai-chat" role="tabpanel">
-                                <h4 class="text-white mb-4">Assistant IA Financier</h4>
-                                
-                                <div class="card bg-dark-card border-0" style="height: 600px;">
-                                    <div class="card-body d-flex flex-column">
-                                        <div class="flex-grow-1 overflow-auto mb-3" id="chat-messages">
-                                            <div class="ai-message mb-3">
-                                                <div class="d-flex align-items-start">
-                                                    <div class="stat-icon-wrapper stat-icon-purple me-3">
-                                                        <i class="fas fa-robot"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <div class="bg-primary bg-opacity-20 p-3 rounded">
-                                                            <p class="text-white mb-0">Bonjour Daniella ! 👋 Je suis votre assistant IA financier personnel. Je peux vous aider avec :</p>
-                                                            <ul class="text-white mb-0 mt-2">
-                                                                <li>📊 Analyser vos dépenses et revenus</li>
-                                                                <li>💰 Suggérer des stratégies d'épargne</li>
-                                                                <li>💡 Proposer des idées de business adaptées à votre budget</li>
-                                                                <li>🚨 Identifier les risques financiers</li>
-                                                                <li>📈 Donner des conseils personnalisés</li>
-                                                            </ul>
-                                                            <p class="text-white mb-0 mt-2">Que souhaitez-vous savoir sur vos finances ?</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control bg-dark text-white border-secondary" id="chat-input" placeholder="Tapez votre question ici...">
-                                            <button class="btn btn-primary-gradient" onclick="sendMessage()">
-                                                <i class="fas fa-paper-plane"></i>
-                                            </button>
-                                        </div>
-                                        <div class="mt-2">
-                                            <small class="text-muted">Suggestions : "Analyse mes dépenses", "Comment épargner plus ?", "Idées de business pour 100k FCFA"</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Analyse des Dépenses -->
-                            <div class="tab-pane fade" id="ai-analysis" role="tabpanel">
-                                <h4 class="text-white mb-4">Analyse Intelligente des Dépenses</h4>
-                                
-                                <div class="row g-4">
-                                    <div class="col-md-6">
-                                        <div class="card bg-dark-card border-0 p-4">
-                                            <h6 class="text-warning mb-3"><i class="fas fa-exclamation-triangle me-2"></i>Alertes de Surconsommation</h6>
-                                            <div id="overspending-alerts"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card bg-dark-card border-0 p-4">
-                                            <h6 class="text-info mb-3"><i class="fas fa-chart-bar me-2"></i>Analyse par Catégorie</h6>
-                                            <div id="category-analysis"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="card bg-dark-card border-0 p-4 mt-4">
-                                    <h6 class="text-white mb-3">Période d'Analyse</h6>
-                                    <div class="row g-3">
-                                        <div class="col-md-3">
-                                            <select class="form-select bg-dark text-white" id="analysis-period">
-                                                <option value="daily">Quotidienne</option>
-                                                <option value="weekly">Hebdomadaire</option>
-                                                <option value="monthly" selected>Mensuelle</option>
-                                                <option value="yearly">Annuelle</option>
-                                                <option value="custom">Période Spécifique</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input type="date" class="form-control bg-dark text-white" id="start-date">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <input type="date" class="form-control bg-dark text-white" id="end-date">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <button class="btn btn-primary-gradient w-100" onclick="updateAnalysis()">Analyser</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Suggestions d'Épargne -->
-                            <div class="tab-pane fade" id="ai-savings" role="tabpanel">
-                                <h4 class="text-white mb-4">Suggestions d'Épargne Personnalisées</h4>
-                                
-                                <div class="row g-4">
-                                    <div class="col-md-8">
-                                        <div class="card bg-dark-card border-0 p-4">
-                                            <h6 class="text-success mb-3"><i class="fas fa-piggy-bank me-2"></i>Recommandations d'Épargne</h6>
-                                            <div id="savings-recommendations"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="card bg-dark-card border-0 p-4">
-                                            <h6 class="text-white mb-3">Calculateur d'Épargne</h6>
-                                            <div class="mb-3">
-                                                <label class="form-label text-muted">Revenus Mensuels</label>
-                                                <input type="number" class="form-control bg-dark text-white" id="monthly-income" placeholder="FCFA">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label text-muted">Objectif d'Épargne (%)</label>
-                                                <input type="range" class="form-range" id="savings-target" min="5" max="50" value="20">
-                                                <span class="text-white" id="savings-percentage">20%</span>
-                                            </div>
-                                            <button class="btn btn-success w-100" onclick="calculateSavings()">Calculer</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Idées Business -->
-                            <div class="tab-pane fade" id="ai-business" role="tabpanel">
-                                <h4 class="text-white mb-4">Idées Business Adaptées à Votre Budget</h4>
-                                
-                                <div class="card bg-dark-card border-0 p-4 mb-4">
-                                    <h6 class="text-white mb-3">Votre Profil Financier</h6>
-                                    <div class="row g-3">
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div class="stat-icon-wrapper stat-icon-blue mx-auto mb-2">
-                                                    <i class="fas fa-coins"></i>
-                                                </div>
-                                                <h6 class="text-white" id="available-capital">329,520 FCFA</h6>
-                                                <small class="text-muted">Capital Disponible</small>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div class="stat-icon-wrapper stat-icon-green mx-auto mb-2">
-                                                    <i class="fas fa-chart-line"></i>
-                                                </div>
-                                                <h6 class="text-white">Modéré</h6>
-                                                <small class="text-muted">Profil de Risque</small>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="text-center">
-                                                <div class="stat-icon-wrapper stat-icon-purple mx-auto mb-2">
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <h6 class="text-white">Intermédiaire</h6>
-                                                <small class="text-muted">Niveau d'Expérience</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div id="business-ideas"></div>
-                            </div>
-                            
-                            <!-- Alertes Intelligentes -->
-                            <div class="tab-pane fade" id="ai-alerts" role="tabpanel">
-                                <h4 class="text-white mb-4">Alertes et Notifications Intelligentes</h4>
-                                
-                                <div class="row g-4">
-                                    <div class="col-md-6">
-                                        <div class="card bg-dark-card border-0 p-4">
-                                            <h6 class="text-danger mb-3"><i class="fas fa-exclamation-circle me-2"></i>Alertes Actives</h6>
-                                            <div id="active-alerts"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card bg-dark-card border-0 p-4">
-                                            <h6 class="text-info mb-3"><i class="fas fa-cog me-2"></i>Configuration des Alertes</h6>
-                                            <div class="mb-3">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" id="deficit-alert" checked>
-                                                    <label class="form-check-label text-white" for="deficit-alert">
-                                                        Alerte déficit fin de mois
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" id="overspend-alert" checked>
-                                                    <label class="form-check-label text-white" for="overspend-alert">
-                                                        Alerte surconsommation
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" id="savings-alert">
-                                                    <label class="form-check-label text-white" for="savings-alert">
-                                                        Rappel objectif épargne
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Chat IA -->
-                            <div class="tab-pane fade" id="ai-chat" role="tabpanel">
-                                <h4 class="text-white mb-4">Assistant IA Conversationnel</h4>
-                                
-                                <div class="card bg-dark-card border-0" style="height: 500px;">
-                                    <div class="card-body d-flex flex-column">
-                                        <div class="flex-grow-1 overflow-auto mb-3" id="chat-messages-secondary">
-                                            <div class="ai-message mb-3">
-                                                <div class="d-flex align-items-start">
-                                                    <div class="stat-icon-wrapper stat-icon-purple me-3">
-                                                        <i class="fas fa-robot"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <div class="bg-primary bg-opacity-20 p-3 rounded">
-                                                            <p class="text-white mb-0">Vous pouvez aussi me poser des questions ici si vous préférez cette vue !</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control bg-dark text-white" id="chat-input-secondary" placeholder="Posez votre question...">
-                                            <button class="btn btn-primary-gradient" onclick="sendMessageSecondary()">
-                                                <i class="fas fa-paper-plane"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- MODAL MODIFIER PROFIL -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark-card border-light">
+      <div class="modal-header border-light">
+        <h5 class="modal-title text-white" id="editProfileLabel">Modifier le profil</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editProfileForm">
+          <div class="mb-3">
+            <label for="editPrenom" class="form-label text-white">Prénom</label>
+            <input type="text" class="form-control bg-input border-light text-white" id="editPrenom" placeholder="Votre prénom">
+          </div>
+          <div class="mb-3">
+            <label for="editNom" class="form-label text-white">Nom</label>
+            <input type="text" class="form-control bg-input border-light text-white" id="editNom" placeholder="Votre nom">
+          </div>
+          <div class="mb-3">
+            <label for="editUsername" class="form-label text-white">Nom d'utilisateur</label>
+            <input type="text" class="form-control bg-input border-light text-white" id="editUsername" placeholder="Votre nom d'utilisateur" disabled>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer border-light">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary-gradient" id="saveProfileBtn">Enregistrer les modifications</button>
+      </div>
     </div>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/db.js"></script>
+<script src="js/session.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/business.js"></script>
+<script src="js/sync-data.js"></script>
+<script>
+// Charger les informations utilisateur
+function loadProfileInfo() {
+    console.log('📝 Chargement des informations du profil...');
+    
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (!loggedInUser) {
+        console.error('❌ Aucun utilisateur connecté');
+        return;
+    }
+    
+    try {
+        const user = JSON.parse(loggedInUser);
+        console.log('👤 Utilisateur trouvé:', user);
+        
+        // Déterminer le nom à afficher (prénom ou username)
+        const displayName = user.prenom || user.username || 'Utilisateur';
+        
+        // Mettre à jour le welcome banner
+        const userNameElement = document.querySelector('[data-user-name]');
+        if (userNameElement) {
+            userNameElement.textContent = displayName;
+            console.log('✅ Welcome banner mis à jour:', displayName);
+        }
+        
+        // Mettre à jour les informations personnelles
+        const prenomEl = document.getElementById('infoPrénom');
+        const nomEl = document.getElementById('infoNom');
+        const usernameEl = document.getElementById('infoUsername');
+        
+        if (prenomEl) prenomEl.textContent = user.prenom || user.username || '-';
+        if (nomEl) nomEl.textContent = user.nom || '-';
+        if (usernameEl) usernameEl.textContent = user.username || '-';
+        
+        console.log('✅ Informations personnelles mises à jour');
+        
+        // Mettre à jour l'avatar
+        const avatar = document.getElementById('profileAvatar');
+        if (avatar) {
+            const firstChar = (user.prenom || user.username || 'U').charAt(0).toUpperCase();
+            const secondChar = (user.nom || user.username || 'U').charAt(1).toUpperCase();
+            avatar.textContent = (firstChar + secondChar).substring(0, 2);
+            console.log('✅ Avatar mis à jour:', firstChar + secondChar);
+        }
+        
+        // Mettre à jour le nom du profil
+        const profileName = document.getElementById('profileName');
+        if (profileName) {
+            const fullName = `${user.prenom || user.username || 'Utilisateur'} ${user.nom || ''}`.trim();
+            profileName.innerHTML = `${fullName} <i class="fas fa-crown text-warning fs-5"></i>`;
+            console.log('✅ Nom du profil mis à jour:', fullName);
+        }
+        
+        // Mettre à jour la bio
+        const profileBio = document.getElementById('profileBio');
+        if (profileBio) {
+            profileBio.textContent = `Utilisateur de la plateforme`;
+        }
+        
+        // Charger le solde depuis la DB
+        ensureDatabaseReady(function() {
+            console.log('📊 DB prête, chargement des statistiques...');
+            
+            getTransactions(user.username, function(transactions) {
+                console.log('📋 Transactions trouvées:', transactions.length);
+                
+                let totalIncome = 0;
+                let totalExpense = 0;
+                let totalSavings = 0;
+                
+                transactions.forEach(tx => {
+                    if (tx.type === 'revenu' || tx.type === 'salaire') {
+                        totalIncome += tx.amount;
+                    } else if (tx.type === 'depense') {
+                        totalExpense += tx.amount;
+                    } else if (tx.type === 'epargne') {
+                        totalSavings += tx.amount;
+                    }
+                });
+                
+                // Charger aussi les business pour calculer les budgets
+                getBusinesses(user.username, function(businesses) {
+                    console.log('🏢 Businesses trouvés:', businesses.length);
+                    
+                    let totalBusinessBudget = 0;
+                    
+                    businesses.forEach(business => {
+                        totalBusinessBudget += business.budget || 0;
+                    });
+                    
+                    // Solde actuel = Revenus - Dépenses
+                    const currentBalance = totalIncome - totalExpense;
+                    
+                    // Solde disponible = Solde actuel - Épargnes - Budgets des business
+                    const availableBalance = currentBalance - totalSavings - totalBusinessBudget;
+                    
+                    // Mettre à jour l'affichage des soldes
+                    const infoBalance = document.getElementById('infoBalance');
+                    if (infoBalance) {
+                        infoBalance.textContent = currentBalance.toLocaleString('fr-FR', {maximumFractionDigits: 0}) + ' FCFA';
+                        console.log('✅ Solde actuel mis à jour:', currentBalance);
+                    }
+                    
+                    // Mettre à jour les cartes de statistiques
+                    const statCount = document.querySelector('[data-stat-count]');
+                    if (statCount) {
+                        statCount.textContent = transactions.length;
+                    }
+                    
+                    const statSavings = document.querySelector('[data-stat-savings]');
+                    if (statSavings) {
+                        statSavings.textContent = totalSavings.toLocaleString('fr-FR', {maximumFractionDigits: 0});
+                    }
+                    
+                    const statCurrent = document.querySelector('[data-stat-current]');
+                    if (statCurrent) {
+                        statCurrent.textContent = currentBalance.toLocaleString('fr-FR', {maximumFractionDigits: 0});
+                    }
+                    
+                    const statIncome = document.querySelector('[data-stat-income]');
+                    if (statIncome) {
+                        statIncome.textContent = totalIncome.toLocaleString('fr-FR', {maximumFractionDigits: 0});
+                    }
+                    
+                    console.log('✅ Statistiques mises à jour');
+                });
+                
+                // Charger le nombre de business
+                getBusinesses(user.username, function(businesses) {
+                    const businessCount = document.getElementById('businessCount');
+                    if (businessCount) {
+                        businessCount.textContent = businesses.length;
+                        console.log('✅ Nombre de business mis à jour:', businesses.length);
+                    }
+                });
+            });
+        });
+    } catch (e) {
+        console.error('❌ Erreur lors du chargement du profil:', e);
+    }
+}
+
+// Gérer les onglets en fonction de l'URL
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🔄 Initialisation de la page profil...');
+    
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab') || 'business';
+    
+    // Masquer tous les onglets
+    document.querySelectorAll('.tab-pane').forEach(pane => {
+        pane.classList.remove('show', 'active');
+    });
+    
+    // Désactiver tous les boutons
+    document.querySelectorAll('.nav-link').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Afficher l'onglet demandé
+    if (tab === 'profil') {
+        document.getElementById('content-profil').classList.add('show', 'active');
+        document.getElementById('tab-profil').classList.add('active');
+    } else {
+        document.getElementById('content-business').classList.add('show', 'active');
+        document.getElementById('tab-business').classList.add('active');
+    }
+    
+    // Charger les informations du profil IMMÉDIATEMENT
+    console.log('📝 Appel de loadProfileInfo...');
+    loadProfileInfo();
+    
+    // Gérer le bouton d'édition du profil
+    const editProfileBtn = document.getElementById('editProfileBtn');
+    if (editProfileBtn) {
+        editProfileBtn.addEventListener('click', function() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                const user = JSON.parse(loggedInUser);
+                document.getElementById('editPrenom').value = user.prenom || '';
+                document.getElementById('editNom').value = user.nom || '';
+                document.getElementById('editUsername').value = user.username || '';
+                
+                const modal = new bootstrap.Modal(document.getElementById('editProfileModal'));
+                modal.show();
+            }
+        });
+    }
+    
+    // Gérer la sauvegarde du profil
+    const saveProfileBtn = document.getElementById('saveProfileBtn');
+    if (saveProfileBtn) {
+        saveProfileBtn.addEventListener('click', function() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                const user = JSON.parse(loggedInUser);
+                user.prenom = document.getElementById('editPrenom').value;
+                user.nom = document.getElementById('editNom').value;
+                
+                localStorage.setItem('loggedInUser', JSON.stringify(user));
+                
+                // Mettre à jour l'affichage
+                loadProfileInfo();
+                
+                // Fermer le modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('editProfileModal'));
+                if (modal) {
+                    modal.hide();
+                }
+                
+                alert('Profil mis à jour avec succès !');
+            }
+        });
+    }
+    
+    console.log('✅ Initialisation terminée');
+});
+</script>
 <script src="businessetprofil.js"></script>
 </body>
 </html>

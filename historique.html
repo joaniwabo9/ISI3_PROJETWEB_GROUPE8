@@ -7,6 +7,7 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+   <link rel="stylesheet" href="theme.css">
    <link rel="stylesheet" href="historique.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>projetarchiweb</title>
@@ -18,17 +19,17 @@
   <!-- HEADER -->
   <div class="header-card mb-4">
     <h6><i class="bi bi-stars"></i> Control your flow</h6>
-    <h4>Bonjour, <span>Daniella</span></h4>
+    <h4>Bonjour, <span data-user-name>Utilisateur</span></h4>
     <p>Attention à vos dépenses ce mois-ci.</p>
   </div>
 
   <!-- MENU -->
    
-  <div class="menu-bar mb-4">
-    <button class="btn btn-outline-light me-2"><i class="bi bi-house"></i> Tableau de Bord</button>
-    <button class="btn btn-outline-light me-2"><i class="bi bi-briefcase"></i> Mes Business</button>
+  <div class="menu-bar mb-4" style="display:none;">
+    <a href="dashboard.html" class="btn btn-outline-light me-2"><i class="bi bi-house"></i> Tableau de Bord</a>
+    <a href="businessetprofil.html?tab=business" class="btn btn-outline-light me-2"><i class="bi bi-briefcase"></i> Mes Business</a>
     <button class="menu-btn active"><i class="bi bi-clock-history"></i> Historique</button>
-    <button class="btn btn-outline-light me-2"><i class="bi bi-person"></i> Mon profil</button>
+    <a href="businessetprofil.html?tab=profil" class="btn btn-outline-light me-2"><i class="bi bi-person"></i> Mon profil</a>
   </div>
 
   <!-- TITRE -->
@@ -51,7 +52,7 @@
     <div class="col-md-3">
       <div class="stat-card income">
         <p>Total Revenus</p>
-        <h2>36 547 <span>FCFA</span></h2>
+        <h2 data-stat-income>0 <span>FCFA</span></h2>
         <div class="progress-bar-custom"></div>
       </div>
     </div>
@@ -59,7 +60,7 @@
     <div class="col-md-3">
       <div class="stat-card expense">
         <p>Total Dépenses</p>
-        <h2>1 997 <span>FCFA</span></h2>
+        <h2 data-stat-expense>0 <span>FCFA</span></h2>
         <div class="progress-bar-custom red"></div>
       </div>
     </div>
@@ -67,7 +68,7 @@
     <div class="col-md-3">
       <div class="stat-card balance">
         <p>Solde Net</p>
-        <h2>+34 550 <span>FCFA</span></h2>
+        <h2 data-stat-balance>0 <span>FCFA</span></h2>
         <div class="progress-bar-custom"></div>
       </div>
     </div>
@@ -75,8 +76,8 @@
     <div class="col-md-3">
       <div class="stat-card">
         <p>Transactions</p>
-        <h2>43</h2>
-        <small>Moy: 896 372 FCFA</small>
+        <h2 data-stat-count>0</h2>
+        <small>Moy: <span data-stat-average>0</span> FCFA</small>
       </div>
     </div>
 
@@ -122,96 +123,76 @@
 </div>
    
 <div class="container py-4 transaction-container">
-
-  
-  <div class="date-header d-flex justify-content-between">
-    <span>● Aujourd'hui</span>
-    <span>2 transactions</span>
-  </div>
-
-  <div class="transaction-card">
-    <div class="icon expense">
-      <i class="bi bi-arrow-down"></i>
-    </div>
-    <div class="details">
-      <h6>Achat transport</h6>
-      <small>Transport</small>
-    </div>
-    <div class="amount negative">
-      -19 <span>FCFA</span>
-    </div>
-  </div>
-
-  <div class="transaction-card">
-    <div class="icon income">
-      <i class="bi bi-arrow-up"></i>
-    </div>
-    <div class="details">
-      <h6>Paiement salaire</h6>
-      <small>Salaire</small>
-    </div>
-    <div class="amount positive">
-      +1718 <span>FCFA</span>
-    </div>
-  </div>
-
-  <div class="date-header d-flex justify-content-between mt-4">
-    <span>● Hier</span>
-    <span>1 transaction</span>
-  </div>
-
-  <div class="transaction-card">
-    <div class="icon expense">
-      <i class="bi bi-arrow-down"></i>
-    </div>
-    <div class="details">
-      <h6>Achat logement</h6>
-      <small>Logement</small>
-    </div>
-    <div class="amount negative">
-      -56 <span>FCFA</span>
-    </div>
-  </div>
-
-  
-  <div class="date-header d-flex justify-content-between mt-4">
-    <span>● Dimanche 4 Janvier 2026</span>
-    <span>1 transaction</span>
-  </div>
-
-  <div class="transaction-card">
-    <div class="icon expense">
-      <i class="bi bi-arrow-down"></i>
-    </div>
-    <div class="details">
-      <h6>Achat logement</h6>
-      <small>Logement</small>
-    </div>
-    <div class="amount negative">
-      -141 <span>FCFA</span>
-    </div>
-  </div>
-
-   <div class="date-header d-flex justify-content-between mt-4">
-    <span>● jeudi 23 decembre 2025</span>
-    <span>1 transaction</span>
-  </div>
-
-  <div class="transaction-card">
-    <div class="icon income">
-      <i class="bi bi-arrow-up"></i>
-    </div>
-    <div class="details">
-      <h6>payement salaire</h6>
-      <small>salaire</small>
-    </div>
-    <div class="amount positive">
-      14100 <span>FCFA</span>
-    </div>
-  </div>
-
+  <!-- Les transactions seront chargées dynamiquement par historique.js -->
 </div>
+
+<!-- SECTION DIAGRAMMES -->
+<div class="container-fluid p-4">
+  <div class="row g-4 mb-5">
+    <!-- Graphique Revenus vs Dépenses -->
+    <div class="col-lg-6">
+      <div class="chart-card">
+        <h5 class="chart-title">
+          <i class="bi bi-graph-up me-2"></i>Revenus vs Dépenses
+        </h5>
+        <canvas id="revenueExpenseChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Graphique Évolution Solde -->
+    <div class="col-lg-6">
+      <div class="chart-card">
+        <h5 class="chart-title">
+          <i class="bi bi-line-chart me-2"></i>Évolution du Solde
+        </h5>
+        <canvas id="balanceEvolutionChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mb-5">
+    <!-- Graphique Catégories -->
+    <div class="col-lg-6">
+      <div class="chart-card">
+        <h5 class="chart-title">
+          <i class="bi bi-pie-chart me-2"></i>Répartition par Catégorie
+        </h5>
+        <canvas id="categoryChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Graphique Types de Transactions -->
+    <div class="col-lg-6">
+      <div class="chart-card">
+        <h5 class="chart-title">
+          <i class="bi bi-bar-chart me-2"></i>Types de Transactions
+        </h5>
+        <canvas id="transactionTypeChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Graphique Tendance Mensuelle -->
+  <div class="row g-4">
+    <div class="col-12">
+      <div class="chart-card">
+        <h5 class="chart-title">
+          <i class="bi bi-calendar-event me-2"></i>Tendance Mensuelle
+        </h5>
+        <canvas id="monthlyTrendChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/db.js"></script>
+<script src="js/transactions.js"></script>
+<script src="js/session.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/sync-data.js"></script>
 <script src="historique.js"></script>
   </body>
 </html>
