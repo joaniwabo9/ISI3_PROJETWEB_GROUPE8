@@ -1,13 +1,611 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>projetarchiweb</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Your Flow - Plateforme de gestion financière intelligente</title>
+    
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+ 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+
+    <link rel="stylesheet" href="pageacceuil.css">
+</head>
+<body>
+  
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <div class="logo-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <span class="brand-text">Control your flow</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#fonctionnalites" data-fr="Fonctionnalités" data-en="Features">Fonctionnalités</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tarifs" data-fr="Tarifs" data-en="Pricing">Tarifs</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq" data-fr="FAQ" data-en="FAQ">FAQ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle language-switcher" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe"></i>
+                            <span id="currentLang">FR</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('fr')">Français</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="switchLanguage('en')">English</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-connexion" href="signin.html" data-fr="Connexion" data-en="Login">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-commencer" href="signup.html" data-fr="Commencer" data-en="Get Started">
+                            Commencer
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-badge mb-4">
+                        <i class="fas fa-sparkles me-2"></i>
+                        <span data-fr="Plateforme de gestion financière intelligente" data-en="Intelligent financial management platform">Plateforme de gestion financière intelligente</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        <span data-fr="Maîtrisez vos" data-en="Master your">Maîtrisez vos</span>
+                        <span class="gradient-text" data-fr="finances" data-en="finances">finances</span>
+                        <span data-fr="comme jamais" data-en="like never before">comme jamais</span>
+                    </h1>
+                    
+                    <p class="hero-description" data-fr="Une expérience visuelle et intuitive qui transforme la gestion de votre argent en activité engageante. IA, analyses avancées et design immersif." data-en="A visual and intuitive experience that transforms your money management into an engaging activity. AI, advanced analytics and immersive design.">
+                        Une expérience visuelle et intuitive qui transforme la gestion de votre argent en activité engageante. IA, analyses avancées et design immersif.
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="signup.html" class="btn btn-primary-custom" data-fr="Commencer gratuitement" data-en="Start for free">
+                            <i class="fas fa-rocket me-2"></i>
+                            Commencer gratuitement
+                        </a>
+                        <a href="#fonctionnalites" class="btn btn-secondary-custom" data-fr="Découvrir les fonctionnalités" data-en="Discover features">
+                            Découvrir les fonctionnalités
+                            <i class="fas fa-chevron-down ms-2"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span data-fr="Sécurisé" data-en="Secure">Sécurisé</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span data-fr="Multi-devises" data-en="Multi-device">Multi-devises</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-desktop"></i>
+                            <span data-fr="Responsive" data-en="Responsive">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="hero-cards">
+                        <div class="balance-card">
+                            <div class="card-header-custom">
+                                <span data-fr="Solde actuel" data-en="Current balance">Solde actuel</span>
+                            </div>
+                            <div class="balance-amount">485.750 <span class="currency">FCFA</span></div>
+                            <div class="balance-change">
+                                <i class="fas fa-arrow-up"></i>
+                                +12.5% <span data-fr="ce mois" data-en="this month">ce mois</span>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-assistant-card">
+                            <div class="ai-header">
+                                <i class="fas fa-brain"></i>
+                                <span data-fr="Assistant IA" data-en="AI Assistant">Assistant IA</span>
+                            </div>
+                            <p data-fr=" Vous dépensez 15% de plus en transports ce mois. Pensez au covoiturage !" data-en="💡 You're spending 15% more on transportation this month. Consider carpooling!">
+                                 Vous dépensez 15% de plus en transports ce mois. Pensez au covoiturage !
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </section>
+
+    
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="stat-number" data-count="10000">10K+</h3>
+                        <p class="stat-label" data-fr="Utilisateurs actifs" data-en="Active users">Utilisateurs actifs</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h3 class="stat-number" data-count="50000000">50M+</h3>
+                        <p class="stat-label" data-fr="FCFA gérés" data-en="FCFA managed">FCFA gérés</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="stat-number">98%</h3>
+                        <p class="stat-label" data-fr="Satisfaction" data-en="Satisfaction">Satisfaction</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="stat-number">24/7</h3>
+                        <p class="stat-label" data-fr="Support disponible" data-en="Support available">Support disponible</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="fonctionnalites" class="features-section">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">
+                    <span data-fr="Des fonctionnalités" data-en="Features">Des fonctionnalités</span>
+                    <span class="gradient-text" data-fr="puissantes" data-en="powerful">puissantes</span>
+                </h2>
+                <p class="section-subtitle" data-fr="Tout ce dont vous avez besoin pour une gestion financière moderne et efficace" data-en="Everything you need for modern and efficient financial management">
+                    Tout ce dont vous avez besoin pour une gestion financière moderne et efficace
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon gradient-purple">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 data-fr="IA Intelligente" data-en="Smart AI">IA Intelligente</h3>
+                        <p data-fr="Assistant conversationnel qui analyse vos finances et vous conseille en temps réel" data-en="Conversational assistant that analyzes your finances and advises you in real time">
+                            Assistant conversationnel qui analyse vos finances et vous conseille en temps réel
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon gradient-blue">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 data-fr="Analyses Avancées" data-en="Advanced Analytics">Analyses Avancées</h3>
+                        <p data-fr="Graphiques interactifs et prédictions pour anticiper votre situation financière" data-en="Interactive charts and predictions to anticipate your financial situation">
+                            Graphiques interactifs et prédictions pour anticiper votre situation financière
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon gradient-orange">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h3 data-fr="Gestion Complète" data-en="Complete Management">Gestion Complète</h3>
+                        <p data-fr="Suivez revenus, dépenses, prêts et épargnes dans une interface unifiée" data-en="Track income, expenses, loans and savings in a unified interface">
+                            Suivez revenus, dépenses, prêts et épargnes dans une interface unifiée
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon gradient-red">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 data-fr="Scan OCR" data-en="OCR Scan">Scan OCR</h3>
+                        <p data-fr="Extrayez automatiquement les données de vos factures et reçus par photo" data-en="Automatically extract data from your invoices and receipts by photo">
+                            Extrayez automatiquement les données de vos factures et reçus par photo
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon gradient-cyan">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 data-fr="Cagnottes d'épargne" data-en="Savings Goals">Cagnottes d'épargne</h3>
+                        <p data-fr="Visualisez vos objectifs comme des jarres qui se remplissent progressivement" data-en="Visualize your goals as jars that fill up gradually">
+                            Visualisez vos objectifs comme des jarres qui se remplissent progressivement
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon gradient-pink">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 data-fr="Sécurité Maximale" data-en="Maximum Security">Sécurité Maximale</h3>
+                        <p data-fr="Vos données financières protégées par un chiffrement de niveau bancaire" data-en="Your financial data protected by bank-level encryption">
+                            Vos données financières protégées par un chiffrement de niveau bancaire
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <section id="tarifs" class="pricing-section">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">
+                    <span data-fr="Des tarifs" data-en="Pricing">Des tarifs</span>
+                    <span class="gradient-text" data-fr="transparents" data-en="transparent">transparents</span>
+                </h2>
+                <p class="section-subtitle" data-fr="Choisissez le plan qui correspond à vos besoins" data-en="Choose the plan that fits your needs">
+                    Choisissez le plan qui correspond à vos besoins
+                </p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 data-fr="Gratuit" data-en="Free">Gratuit</h3>
+                            <div class="pricing-price">
+                                <span class="price">0</span>
+                                <span class="currency" data-fr="Pour toujours" data-en="Forever">Pour toujours</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-features">
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Jusqu'à 100 transactions/mois" data-en="Up to 100 transactions/month">Jusqu'à 100 transactions/mois</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Analyses basiques" data-en="Basic analytics">Analyses basiques</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="1 cagnotte d'épargne" data-en="1 savings goal">1 cagnotte d'épargne</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Support communautaire" data-en="Community support">Support communautaire</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="signup.html" class="btn btn-pricing" data-fr="Commencer gratuitement" data-en="Start for free">Commencer gratuitement</a>
+                    </div>
+                </div>
+                
+             
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card pricing-card-popular">
+                        <div class="popular-badge" data-fr="Populaire" data-en="Popular">Populaire</div>
+                        <div class="pricing-header">
+                            <h3 data-fr="Premium" data-en="Premium">Premium</h3>
+                            <div class="pricing-price">
+                                <span class="price">2.500</span>
+                                <span class="currency">FCFA/mois</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-features">
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Transactions illimitées" data-en="Unlimited transactions">Transactions illimitées</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="IA avancée avec prédictions" data-en="Advanced AI with predictions">IA avancée avec prédictions</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Cagnottes illimitées" data-en="Unlimited savings goals">Cagnottes illimitées</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Export de données" data-en="Data export">Export de données</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Support prioritaire 24/7" data-en="Priority support 24/7">Support prioritaire 24/7</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Scan OCR illimité" data-en="Unlimited OCR scan">Scan OCR illimité</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="signup.html" class="btn btn-pricing btn-pricing-popular" data-fr="Essayer 14 jours gratuits" data-en="Try 14 days free">Essayer 14 jours gratuits</a>
+                    </div>
+                </div>
+                
+      
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 data-fr="Business" data-en="Business">Business</h3>
+                            <div class="pricing-price">
+                                <span class="price">7.500</span>
+                                <span class="currency">FCFA/mois</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="pricing-features">
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Tout Premium +" data-en="All Premium +">Tout Premium +</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Gestion multi-business" data-en="Multi-business management">Gestion multi-business</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Analyses de rentabilité" data-en="Profitability analytics">Analyses de rentabilité</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="API d'intégration" data-en="Integration API">API d'intégration</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Manager dédié" data-en="Dedicated manager">Manager dédié</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span data-fr="Formation personnalisée" data-en="Personalized training">Formation personnalisée</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="#" class="btn btn-pricing" data-fr="Contacter l'équipe" data-en="Contact team">Contacter l'équipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">
+                    <span data-fr="Questions" data-en="Questions">Questions</span>
+                    <span class="gradient-text" data-fr="fréquentes" data-en="frequent">fréquentes</span>
+                </h2>
+                <p class="section-subtitle" data-fr="Tout ce que vous devez savoir" data-en="Everything you need to know">
+                    Tout ce que vous devez savoir
+                </p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion custom-accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    <span data-fr="Comment fonctionne l'assistant IA ?" data-en="How does the AI assistant work?">Comment fonctionne l'assistant IA ?</span>
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-fr="Notre IA analyse vos transactions en temps réel, identifie des patterns et vous propose des conseils personnalisés pour optimiser votre budget. Elle apprend de vos habitudes et s'adapte à votre situation unique." data-en="Our AI analyzes your transactions in real time, identifies patterns and offers you personalized advice to optimize your budget. It learns from your habits and adapts to your unique situation.">
+                                    Notre IA analyse vos transactions en temps réel, identifie des patterns et vous propose des conseils personnalisés pour optimiser votre budget. Elle apprend de vos habitudes et s'adapte à votre situation unique.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <span data-fr="Mes données sont-elles sécurisées ?" data-en="Is my data secure?">Mes données sont-elles sécurisées ?</span>
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-fr="Absolument. Nous utilisons un chiffrement de niveau bancaire (AES-256) pour protéger toutes vos données. Vos informations financières ne sont jamais partagées avec des tiers et nos serveurs sont hébergés dans des centres de données certifiés." data-en="Absolutely. We use bank-level encryption (AES-256) to protect all your data. Your financial information is never shared with third parties and our servers are hosted in certified data centers.">
+                                    Absolument. Nous utilisons un chiffrement de niveau bancaire (AES-256) pour protéger toutes vos données. Vos informations financières ne sont jamais partagées avec des tiers et nos serveurs sont hébergés dans des centres de données certifiés.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <span data-fr="Puis-je utiliser l'app hors ligne ?" data-en="Can I use the app offline?">Puis-je utiliser l'app hors ligne ?</span>
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-fr="Oui ! Notre application mobile vous permet d'enregistrer des transactions même sans connexion internet. Les données seront automatiquement synchronisées dès que vous retrouverez une connexion." data-en="Yes! Our mobile application allows you to record transactions even without an internet connection. The data will be automatically synchronized as soon as you regain a connection.">
+                                    Oui ! Notre application mobile vous permet d'enregistrer des transactions même sans connexion internet. Les données seront automatiquement synchronisées dès que vous retrouverez une connexion.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    <span data-fr="Comment fonctionne le scan OCR ?" data-en="How does OCR scanning work?">Comment fonctionne le scan OCR ?</span>
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-fr="Prenez simplement une photo de votre facture ou reçu avec votre smartphone. Notre technologie OCR extrait automatiquement les informations importantes (montant, date, catégorie) et crée la transaction pour vous." data-en="Simply take a photo of your invoice or receipt with your smartphone. Our OCR technology automatically extracts important information (amount, date, category) and creates the transaction for you.">
+                                    Prenez simplement une photo de votre facture ou reçu avec votre smartphone. Notre technologie OCR extrait automatiquement les informations importantes (montant, date, catégorie) et crée la transaction pour vous.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    <span data-fr="Puis-je annuler mon abonnement à tout moment ?" data-en="Can I cancel my subscription at any time?">Puis-je annuler mon abonnement à tout moment ?</span>
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" data-fr="Oui, vous pouvez annuler votre abonnement à tout moment depuis les paramètres de votre compte. Il n'y a aucun engagement et aucun frais d'annulation. Vous conserverez l'accès jusqu'à la fin de votre période payée." data-en="Yes, you can cancel your subscription at any time from your account settings. There is no commitment and no cancellation fees. You will retain access until the end of your paid period.">
+                                    Oui, vous pouvez annuler votre abonnement à tout moment depuis les paramètres de votre compte. Il n'y a aucun engagement et aucun frais d'annulation. Vous conserverez l'accès jusqu'à la fin de votre période payée.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content text-center">
+                <h2 data-fr="Prêt à reprendre le contrôle?" data-en="Ready to take back control?">Prêt à reprendre le contrôle?</h2>
+                <p data-fr="Rejoignez des milliers d'utilisateurs qui ont transformé leur gestion financière avec Control your flow" data-en="Join thousands of users who have transformed their financial management with Control your flow">
+                    Rejoignez des milliers d'utilisateurs qui ont transformé leur gestion financière avec Control your flow
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="signup.html" class="btn btn-cta-primary" data-fr="Commencer gratuitement" data-en="Start for free">
+                        <i class="fas fa-rocket me-2"></i>
+                        Commencer gratuitement
+                    </a>
+                    <a href="signin.html" class="btn btn-cta-secondary" data-fr="Déjà membre ? Connectez-vous" data-en="Already a member? Log in">
+                        <i class="fas fa-heart me-2"></i>
+                        Déjà membre ? Connectez-vous
+                    </a>
+                </div>
+                
+                <div class="cta-features">
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-fr="Sans carte bancaire" data-en="No credit card required">Sans carte bancaire</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-fr="Gratuit pour toujours" data-en="Free forever">Gratuit pour toujours</span>
+                    </div>
+                    <div class="cta-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span data-fr="Annulez à tout moment" data-en="Cancel anytime">Annulez à tout moment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-brand">
+                        <div class="logo-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <span class="brand-text">Control your flow</span>
+                    </div>
+                    <p class="footer-description" data-fr="La plateforme de gestion financière intelligente qui transforme votre rapport à l'argent." data-en="The intelligent financial management platform that transforms your relationship with money.">
+                        La plateforme de gestion financière intelligente qui transforme votre rapport à l'argent.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-3 col-6 mb-4 mb-lg-0">
+                    <h5 data-fr="Produit" data-en="Product">Produit</h5>
+                    <ul class="footer-links">
+                        <li><a href="#fonctionnalites" data-fr="Fonctionnalités" data-en="Features">Fonctionnalités</a></li>
+                        <li><a href="#tarifs" data-fr="Tarifs" data-en="Pricing">Tarifs</a></li>
+                     
+                    </ul>
+                </div>
+                
+                
+                <div class="col-lg-2 col-md-3 col-6 mb-4 mb-lg-0">
+                    <h5 data-fr="Ressources" data-en="Resources">Ressources</h5>
+                    <ul class="footer-links">
+                        <li><a href="#" data-fr="Centre d'aide" data-en="Help center">Centre d'aide</a></li>
+                        <li><a href="#faq" data-fr="FAQ" data-en="FAQ">FAQ</a></li>
+                        <li><a href="#" data-fr="Tutoriels" data-en="Tutorials">Tutoriels</a></li>
+                        <li><a href="#" data-fr="API" data-en="API">API</a></li>
+                    </ul>
+                </div>
+                
+                
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Control your flow. </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+    <script src="pageacceuil.js"></script>
+</body>
 </html>
