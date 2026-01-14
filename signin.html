@@ -14,7 +14,7 @@
 </head>
 
 
-<body class="d-flex align-items-center justify-content-center">
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
 
     <!-- Conteneur pour l'arrière-plan animé -->
     <div class="bubble-wrapper">
@@ -45,32 +45,32 @@
         </div>
 
         <!-- Formulaire -->
-        <form>
+        <form id="registerForm">
 
-            <!-- Nom complet -->
+            <!-- Prénom -->
+            <div class="mb-3 position-relative container-dot dot-orange">
+                <label class="form-label">Prénom</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input id="prenom" type="text" class="form-control" placeholder="Votre prénom">
+                </div>
+            </div>
+
+            <!-- Nom -->
+            <div class="mb-3 position-relative container-dot dot-blue">
+                <label class="form-label">Nom</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input id="nom" type="text" class="form-control" placeholder="Votre nom">
+                </div>
+            </div>
+
+            <!-- Nom d'utilisateur -->
             <div class="mb-3 position-relative container-dot dot-orange">
                 <label class="form-label">Nom d'utilisateur</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-person"></i></span>
-                    <input type="text" class="form-control" placeholder="Nivelo-user0000">
-                </div>
-            </div>
-
-            <!-- Email -->
-            <div class="mb-3position-relative container-dot dot-blue">
-                <label class="form-label">Email</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                    <input type="email" class="form-control" placeholder="votre@email.com">
-                </div>
-            </div>
-
-            <!-- Téléphone -->
-            <div class="mb-3 position-relative container-dot dot-orange">
-                <label class="form-label">Téléphone</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                    <input type="text" class="form-control" placeholder="+237 6XX XXX XXX">
+                    <input id="username" type="text" class="form-control" placeholder="Nom d'utilisateur">
                 </div>
             </div>
 
@@ -79,7 +79,7 @@
                 <label class="form-label">Mot de passe</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                    <input type="password" class="form-control" id="password" placeholder="........">
+                    <input id="password" type="password" class="form-control" placeholder="........">
                     <span class="input-group-text btn-eye"><i class="bi bi-eye"></i></span>
                 </div>
             </div>
@@ -102,18 +102,9 @@
                 </label>
             </div>
 
-            <!-- se souvenir de moi -->
-            <div class="d-flex justify-content-between mb-2">
-                <div class="form-check mb-4">
-                    <input class="form-check-input" type="checkbox" id="terms">
-                    <label class="form-check-label small text-secondary" for="form-check-input">Se souvenir de moi</label>
-                </div>
-                <p><a href="#">Mot de passe oublié?</a></p>
-            </div>
-
             <!-- creer mon compte -->
             <div class="d-grid gap-2">
-                <button class="cree w-100 mb-4 d-flex align-items-center justify-content-center" id="validate">Creer mon compte
+                <button type="submit" class="cree w-100 mb-4 d-flex align-items-center justify-content-center">Creer mon compte
                     <i class="bi bi-arrow-right ms-2 arrow-icon"></i>
                     </button>
             </div>
@@ -126,22 +117,84 @@
             <div class="row g-3 mb-4">
                 <div class="col-6">
                     <button type="button" class="but w-100">
-                       <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google" width="20" class="me-2">
-                       Google
-                      </button>
+                        <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google" width="20">
+                        <span>Google</span>
+                    </button>
                 </div>
                 <div class="col-6">
                     <button type="button" class="but w-100">
-                      <i class="bi bi-github me-2"></i>
-                        GitHub
-                     </button>
+                        <i class="bi bi-github"></i>
+                        <span>GitHub</span>
+                    </button>
                 </div>
             </div>
 
-            <p class="form-label">Vous avez déjà un compte? <a href="signup.html">Acceder à mon compte</a></p>
+            <p class="form-label">Vous avez déjà un compte? <a href="signup.html">Se connecter</a></p>
         </form>
     </div>
 
 </body>
 
+
+<!-- Lier les fichiers JS -->
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script>
+// Gérer l'affichage/masquage du mot de passe
+document.querySelectorAll('.btn-eye').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const input = this.previousElementSibling;
+        if (input && input.type === 'password') {
+            input.type = 'text';
+            this.innerHTML = '<i class="bi bi-eye-slash"></i>';
+        } else if (input) {
+            input.type = 'password';
+            this.innerHTML = '<i class="bi bi-eye"></i>';
+        }
+    });
+});
+
+document.getElementById("registerForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const prenom = document.getElementById("prenom").value.trim();
+    const nom = document.getElementById("nom").value.trim();
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const cpassword = document.getElementById("cpassword").value.trim();
+    const terms = document.getElementById("terms").checked;
+
+    if(!prenom || !nom || !username || !password || !cpassword){
+        alert("Tous les champs sont obligatoires");
+        return;
+    }
+
+    if(password !== cpassword){
+        alert("Les mots de passe ne correspondent pas");
+        return;
+    }
+
+    if(!terms){
+        alert("Vous devez accepter les conditions d'utilisation");
+        return;
+    }
+
+    // Créer l'utilisateur
+    const newUser = {
+        prenom: prenom,
+        nom: nom,
+        username: username,
+        password: password
+    };
+
+    addUser(newUser, function(success){
+        if(success){
+            alert("Compte créé avec succès! Vous pouvez maintenant vous connecter.");
+            window.location.href = "signup.html";
+        } else {
+            alert("Erreur lors de la création du compte. Le nom d'utilisateur existe peut-être déjà.");
+        }
+    });
+});
+</script>
 </html>
